@@ -43,3 +43,17 @@ export const getProductsByCategory = async (category) => {
     console.log(cleanedData);
     return cleanedData;
 }
+
+export const getProductById = async (id) => {
+  // get document reference
+  const docRef = doc(db, "products", id);
+  // looking up the document based on reference
+  const querySnapshot = await getDoc(docRef);
+  // check if doc exists based on id passed in
+  if (!querySnapshot.exists()) {
+    // throw error if it doesn't exist
+    throw new Error("Document not found");
+  }
+  // or return all the data we need
+  return { id: querySnapshot.id, ...querySnapshot.data() };
+};
