@@ -1,0 +1,15 @@
+@use '../../partials/colors';
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    height: 400px;
+    width: 300px;
+    border: 1px solid colors.$border-color;
+}
+
+.img{
+    width: 90%;
+}
