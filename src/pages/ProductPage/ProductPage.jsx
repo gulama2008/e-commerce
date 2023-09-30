@@ -24,22 +24,37 @@ const ProductPage = ({ product }) => {
   }
   console.log(quantityInCart);
   return (
-    <div>
-      <img src={product.image} alt="" />
-      <div>
+    <div className={styles.container}>
+      <img src={product.image} alt="" className={styles.img} />
+      <div className={styles.info}>
         <p>{product.name}</p>
         <p>${product.price}</p>
-        {product.size.map((size,index )=> { 
-          return <button key={index} index={ index} onClick={onClickSizeButton} className={ styles.btn}>
-            { size}
-          </button>
-        })}
-        <p>In stock: { quantity} left</p>
-        <input type="number" min={1} max={quantity} value={quantityAdd} onChange={changeQuantityPurchase}/>
+        <div>
+          {product.size.map((size, index) => {
+            return (
+              <button
+                key={index}
+                index={index}
+                onClick={onClickSizeButton}
+                className={styles.btn}
+              >
+                {size}
+              </button>
+            );
+          })}
+        </div>
+        <p>In stock: {quantity} left</p>
+        <input
+          type="number"
+          min={1}
+          max={quantity}
+          value={quantityAdd}
+          onChange={changeQuantityPurchase}
+        />
         <button onClick={addToCart}>Add to Cart</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductPage
