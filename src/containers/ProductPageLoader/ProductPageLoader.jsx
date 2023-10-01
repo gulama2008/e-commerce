@@ -5,7 +5,7 @@ import ProductPage from '../../pages/ProductPage/ProductPage';
 
 const ProductPageLoader = () => {
     // console.log(useParams());
-    const { id } = useParams();
+    const { id,category } = useParams();
     const [product, setProduct] = useState(null);
     const[isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -20,7 +20,8 @@ const ProductPageLoader = () => {
       <>
         {isLoading && <p>is loading...</p>}
         {error && <p>{error}</p>}
-        {product && <ProductPage product={product}/>}
+            {product && <ProductPage product={product} category={ category} />
+            }
       </>
     );
 }
