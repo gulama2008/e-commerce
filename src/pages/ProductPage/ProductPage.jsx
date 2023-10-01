@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './ProductPage.module.scss'
-const ProductPage = ({ product }) => {
+import { ProductsContext } from '../../context/ProductsContextProvider';
+import { saveItemsToSessionStorage } from '../../services/data-service';
+import { NavLink } from 'react-router-dom';
+const ProductPage = ({ product,category }) => {
+  const { itemsInCart,updateCart } = useContext(ProductsContext);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
   const [quantity, setQuantity] = useState(product.quantity[0]);
   const [quantityAdd, setQuantityAdd] = useState(1);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
+  console.log(product);
+  console.log(activeSizeIndex);
+  console.log(product.size[activeSizeIndex]);
   const onClickSizeButton = (e) => { 
     setQuantityAdd(1);
     const index = e.target.getAttribute('index');
@@ -14,45 +21,58 @@ const ProductPage = ({ product }) => {
     
   }
   const changeQuantityPurchase = (e) => {
-    setQuantityAdd(e.target.value)
+    setQuantityAdd(parseInt(e.target.value))
   }
   const addToCart = () => { 
     setIsAddedToCart(true);
     setQuantity(quantity - parseInt(quantityAdd));
-    setQuantityAdd(0);
+    setQuantityAdd(1);
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
+    const newItem = {
+      ...product,
+      size: product.size[activeSizeIndex],
+      quantity: quantityAdd,
+    };
+    console.log(newItem);
+    // saveItemsToSessionStorage(newItem);
+    updateCart(newItem);
   }
-  console.log(quantityInCart);
+  console.log(itemsInCart);
+  // updateCart({id:123,size:12,quantity:5})
   return (
-    <div className={styles.container}>
-      <img src={product.image} alt="" className={styles.img} />
-      <div className={styles.info}>
-        <p>{product.name}</p>
-        <p>${product.price}</p>
-        <div>
-          {product.size.map((size, index) => {
-            return (
-              <button
-                key={index}
-                index={index}
-                onClick={onClickSizeButton}
-                className={styles.btn}
-              >
-                {size}
-              </button>
-            );
-          })}
+    <div>
+      <div className={styles.container}>
+        <img src={product.image} alt="" className={styles.img} />
+        <div className={styles.info}>
+          <p>{product.name}</p>
+          <p>${product.price}</p>
+          <div>
+            {product.size.map((size, index) => {
+              return (
+                <button
+                  key={index}
+                  index={index}
+                  onClick={onClickSizeButton}
+                  className={styles.btn}
+                >
+                  {size}
+                </button>
+              );
+            })}
+          </div>
+          <p>In stock: {quantity} left</p>
+          <input
+            type="number"
+            min={1}
+            max={quantity}
+            value={quantity == 0 ? 0 : quantityAdd}
+            onChange={changeQuantityPurchase}
+          />
+          {quantity == 0 && <p>Sorry, no stock left</p>}
+          <button onClick={addToCart}>Add to Cart</button>
         </div>
-        <p>In stock: {quantity} left</p>
-        <input
-          type="number"
-          min={1}
-          max={quantity}
-          value={quantityAdd}
-          onChange={changeQuantityPurchase}
-        />
-        <button onClick={addToCart}>Add to Cart</button>
       </div>
+      <NavLink to={`/${category}`}>Back</NavLink>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import Category from '../../components/CategoryCard/CategoryCard'
 import { ProductsContext } from '../../context/ProductsContextProvider';
-import { filterProductsByCategory } from '../../services/data-service';
 
 const CategoriesContainer = () => {
     // const { products } = useContext(ProductsContext);
