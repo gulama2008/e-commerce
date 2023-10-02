@@ -1,0 +1,46 @@
+@use "../../partials/colors";
+.container {
+  width: 20%;
+  background-color: white;
+  padding: 24px 28px;
+  border: 1px solid colors.$border-color;
+  border-radius: 8px;
+}
+.delivery_section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid colors.$partition-color;;
+}
+.delivery {
+  display: flex;
+  gap: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 12px;
+  &_label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    &_title {
+      color: colors.$font-main;
+    }
+    &_desc {
+      color: colors.$font-secondary;
+      font-size: 14px;
+    }
+  }
+}
+.title {
+  color: colors.$font-main;
+}
+
+.summary_section{
+    display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.summary{
+    display: flex;
+    justify-content: space-between;
+}

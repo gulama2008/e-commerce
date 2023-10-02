@@ -1,11 +1,15 @@
 @use '../../partials/colors';
 .container{
     display: flex;
-    
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     &_products{
+        width: 45%;
         background-color: white;
         padding: 24px 28px;
         border: 1px solid colors.$border-color;
         border-radius: 8px;
     }
+    
 }
