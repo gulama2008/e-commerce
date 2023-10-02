@@ -1,15 +1,22 @@
 @use '../../partials/colors';
+.title{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
 .container{
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    
     &_products{
-        width: 45%;
+        width: 650px;
         background-color: white;
         padding: 24px 28px;
         border: 1px solid colors.$border-color;
         border-radius: 8px;
+        align-self: flex-start;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
-    
 }

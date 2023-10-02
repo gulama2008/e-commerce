@@ -1,30 +1,44 @@
-@use '../../partials/colors';
-.container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
-    height: 200px;
-    
-    padding: 0 2.5rem;
+@use "../../partials/colors";
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  height: 200px;
+  position: relative;
+  flex-wrap: wrap;
 }
-.img{
-    max-width: 100px;
-    max-height: 100%;
+.img {
+  max-width: 100px;
+  max-height: 100%;
 }
-.withBottomBorder{
-    border-bottom: 1px solid colors.$partition-color;
+.withBottomBorder {
+  border-bottom: 1px solid colors.$partition-color;
 }
-.quantity{
-    width: 50px;
+.quantity {
+  width: 50px;
 }
-.delete{
-    width: 20px;
+.delete {
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-.edit{
+.edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 50px;
+}
+.info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 50px;
+    gap: 10px;
+  &_small {
+    font-size: 14px;
+    color: colors.$font-secondary;
+  }
+}
+.size {
 }

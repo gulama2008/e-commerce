@@ -1,10 +1,13 @@
 @use "../../partials/colors";
+
 .container {
-  width: 20%;
+    align-self: flex-start;
+  width: 300px;
   background-color: white;
   padding: 24px 28px;
   border: 1px solid colors.$border-color;
   border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .delivery_section {
   display: flex;
@@ -22,9 +25,6 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    &_title {
-      color: colors.$font-main;
-    }
     &_desc {
       color: colors.$font-secondary;
       font-size: 14px;
@@ -38,9 +38,25 @@
 .summary_section{
     display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+  margin-top: 20px;
 }
 .summary{
     display: flex;
     justify-content: space-between;
+    color: colors.$font-secondary;
+    &_total{
+        color: colors.$font-main;
+    }
 }
+
+.btn{
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #a386be;
+    color: white;
+    font-weight: 600;
+}
+
+

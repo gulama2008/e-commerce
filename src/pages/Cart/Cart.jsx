@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import ProductInCart from "../../components/ProductInCart/ProductInCart";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
@@ -11,6 +11,7 @@ const Cart = () => {
   console.log(itemsInCart);
   return (
     <>
+      <p className={ styles.title}>Shopping Cart</p>
       {itemsInCart.length > 0 ? (
         <div className={styles.container}>
           <div className={styles.container_products}>

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./ProductInCart.module.scss";
+import { toFloat } from "../../services/data-service";
+import QuantityButton from "../QuantityButton/QuantityButton";
 const ProductInCart = ({ item, isLastItem, index }) => {
   const { itemsInCart, deleteItemInCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -22,10 +24,12 @@ const ProductInCart = ({ item, isLastItem, index }) => {
   return (
     <div className={containerClasses}>
       <img src={item.image} alt="" className={styles.img} />
-      <div>
+      <div className={styles.info}>
         <p>{item.name}</p>
-        <p>{item.size}</p>
-        <p>${item.price*item.quantity}</p>
+        <p className={styles.info_small}>Size: {item.size}</p>
+        <p className={styles.info_small}>Unit price: ${toFloat(item.price)}</p>
+        <p className={styles.info_small}>Stock: {item.stock} left</p>
+        {/* <p>Subtotal: ${toFloat(item.price * item.quantity)}</p> */}
       </div>
       <div className={styles.edit}>
         <img
@@ -34,12 +38,13 @@ const ProductInCart = ({ item, isLastItem, index }) => {
           className={styles.delete}
           onClick={deleteItem}
         />
-        <input
-          type="number"
-          className={styles.quantity}
-          value={quantityInCart}
-          onChange={changeQuantity}
+        <QuantityButton
+          item={item}
+          quantityInCart={quantityInCart}
+          setQuantityInCart={setQuantityInCart}
+          index={index}
         />
+        <p>Subtotal: ${toFloat(item.price * item.quantity)}</p>
       </div>
     </div>
   );
