@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import styles from './ProductPage.module.scss'
 import { ProductsContext } from '../../context/ProductsContextProvider';
-import { saveItemsToSessionStorage } from '../../services/data-service';
+import { saveItemsToSessionStorage, toFloat } from '../../services/data-service';
 import { NavLink } from 'react-router-dom';
 const ProductPage = ({ product,category }) => {
   const { itemsInCart,updateCart } = useContext(ProductsContext);
@@ -25,13 +25,14 @@ const ProductPage = ({ product,category }) => {
   }
   const addToCart = () => { 
     setIsAddedToCart(true);
-    setQuantity(quantity - parseInt(quantityAdd));
+    // setQuantity(quantity - parseInt(quantityAdd));
     setQuantityAdd(1);
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
     const newItem = {
       ...product,
       size: product.size[activeSizeIndex],
       quantity: quantityAdd,
+      stock: quantity
     };
     console.log(newItem);
     // saveItemsToSessionStorage(newItem);
@@ -45,7 +46,7 @@ const ProductPage = ({ product,category }) => {
         <img src={product.image} alt="" className={styles.img} />
         <div className={styles.info}>
           <p>{product.name}</p>
-          <p>${product.price}</p>
+          <p>${toFloat(product.price)}</p>
           <div>
             {product.size.map((size, index) => {
               return (
@@ -69,7 +70,7 @@ const ProductPage = ({ product,category }) => {
             onChange={changeQuantityPurchase}
           />
           {quantity == 0 && <p>Sorry, no stock left</p>}
-          <button onClick={addToCart}>Add to Cart</button>
+          <button onClick={addToCart} disabled={ quantity==0}>Add to Cart</button>
         </div>
       </div>
       <NavLink to={`/${category}`}>Back</NavLink>

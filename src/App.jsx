@@ -3,9 +3,10 @@ import NavBar from './components/NavBar/NavBar';
 import HomePage from './pages/HomePage/HomePage';
 import ProductsContextProvider from './context/ProductsContextProvider'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Cart from './pages/Cart/Cart';
 import ProductsPageLoader from './containers/ProductsPageLoader/ProductsPageLoader';
 import ProductPageLoader from './containers/ProductPageLoader/ProductPageLoader';
+import CartPageLoader from './containers/CartPageLoader/CartPageLoader';
+import Cart from './pages/Cart/Cart';
 
 function App() {
   
