@@ -29,11 +29,21 @@ const ProductsContextProvider = ({ children}) => {
     setItemsInCart(newItemsArray);
   }
 
+  const deleteItemInCart = (newItemsArray) => { 
+    setItemsInCart(newItemsArray);
+  }
+
+  const changeItemQuantityInCart = (index,newQuantity) => { 
+    const copy = [...itemsInCart];
+    copy[index].quantity = newQuantity;
+    setItemsInCart(copy);
+  }
+
   useEffect(() => {
     refreshProducts();
   }, []);
   return (
-      <ProductsContext.Provider value={{ products, setProducts,refreshProducts,itemsInCart,updateCart }}>{children}</ProductsContext.Provider>
+      <ProductsContext.Provider value={{ products, setProducts,refreshProducts,itemsInCart,updateCart,deleteItemInCart,changeItemQuantityInCart }}>{children}</ProductsContext.Provider>
   )
 }
 

@@ -1,0 +1,30 @@
+@use '../../partials/colors';
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    height: 200px;
+    
+    padding: 0 2.5rem;
+}
+.img{
+    max-width: 100px;
+    max-height: 100%;
+}
+.withBottomBorder{
+    border-bottom: 1px solid colors.$partition-color;
+}
+.quantity{
+    width: 50px;
+}
+.delete{
+    width: 20px;
+}
+.edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+}
