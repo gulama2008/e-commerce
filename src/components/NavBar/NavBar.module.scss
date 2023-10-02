@@ -1,0 +1,24 @@
+@use '../../partials/colors';
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: colors.$main-color;
+}
+.logo{
+
+}
+
+.navlinks{
+    margin-right: 50px;
+    
+    &_link{
+        margin-left: 20px;
+        text-decoration: none;
+        color: white;
+    }
+}
+.cart{
+    width: 40px;
+}

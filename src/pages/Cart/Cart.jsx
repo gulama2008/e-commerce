@@ -10,7 +10,7 @@ const Cart = () => {
 
   console.log(itemsInCart);
   return (
-    <>
+    <div className={styles.page }>
       <p className={ styles.title}>Shopping Cart</p>
       {itemsInCart.length > 0 ? (
         <div className={styles.container}>
@@ -29,9 +29,11 @@ const Cart = () => {
           <OrderDetail />
         </div>
       ) : (
-        <div>Cart is empty</div>
+          <div className={styles.empty}>
+            <img src="src/assets/empty.png" alt="" />
+          </div>
       )}
-    </>
+    </div>
   );
 };
 
