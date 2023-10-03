@@ -7,10 +7,19 @@
     background-color: colors.$main-color;
 }
 .logo{
-    font-family: 'Shrikhand', cursive;
+    // font-family: 'Shrikhand', cursive;
+    font-family: 'Schoolbell', cursive;;
     color: white;
-    font-size: larger;
+    font-size: 30px;
     margin-left: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    &_img{
+        width: 30px;
+        margin-left: 10px;
+
+    }
 }
 
 .navlinks{
@@ -28,9 +37,17 @@
 }
 .img{
     margin-right: 50px;
-    
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &_cart{
+        width: 30px;
+    }
+    &_fav{
+        width: 25px;
+    }
 }
 
 .cart{
-        width: 30px;
+        
     }

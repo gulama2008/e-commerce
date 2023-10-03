@@ -4,7 +4,11 @@ import styles from './NavBar.module.scss';
 const NavBar = () => {
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>Baby Planet</div>
+      <NavLink to="/" className={styles.logo}>
+        Baby Planet
+        <img src="src/assets/logo-img.png" alt="" className={styles.logo_img} />
+      </NavLink>
+
       <div className={styles.navlinks}>
         <NavLink to="/" className={styles.navlinks_link}>
           HOME
@@ -21,10 +25,22 @@ const NavBar = () => {
       </div>
       <div className={styles.img}>
         <NavLink
+        // to="cart"
+        // className={styles.navlinks_link}
+        >
+          <img src="src/assets/fav1.png" alt="" className={styles.img_fav} />
+        </NavLink>
+        <NavLink
+        // to="cart"
+        // className={styles.navlinks_link}
+        >
+          <img src="src/assets/user.png" alt="" className={styles.img_fav} />
+        </NavLink>
+        <NavLink
           to="cart"
           // className={styles.navlinks_link}
         >
-          <img src="src/assets/cart.png" alt="" className={styles.cart} />
+          <img src="src/assets/cart.png" alt="" className={styles.img_cart} />
         </NavLink>
       </div>
     </nav>
