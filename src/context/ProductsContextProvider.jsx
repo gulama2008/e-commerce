@@ -17,16 +17,13 @@ const ProductsContextProvider = ({ children}) => {
     if (itemsInCart.length === 0) { 
       return setItemsInCart([newItem]);
     }
-    let foundItem = true;
-    const newItemsArray = itemsInCart.map(item => {
-      const itemCopy = { ...item };
-      console.log(itemCopy);
-      (itemCopy.id == newItem.id && itemCopy.size == newItem.size) ? itemCopy.quantity += newItem.quantity : foundItem=false;
-      return itemCopy;
+    const copy = itemsInCart.map(item => ({ ...item }));
+    const sameItemIndex = copy.findIndex((item) => { 
+      return item.id == newItem.id && item.size == newItem.size;
     })
-    !foundItem && newItemsArray.push(newItem);
-    saveItemsToSessionStorage(newItemsArray);
-    setItemsInCart(newItemsArray);
+    sameItemIndex == -1 ? copy.push(newItem) : copy[sameItemIndex].quantity += newItem.quantity;
+    saveItemsToSessionStorage(copy);
+    setItemsInCart(copy);
   }
 
   const deleteItemInCart = (newItemsArray) => { 
