@@ -7,8 +7,8 @@ const ProductCard = ({ product }) => {
   return (
     <Link to={`${product.id}`} className={styles.card}>
       <img className={styles.img} src={product.image} alt="" />
-      <h3>${toFloat(product.price)}</h3>
-      <p>{product.name}</p>
+      <p className={ styles.card_name}>{product.name}</p>
+      <p className={ styles.card_price}>${toFloat(product.price)}</p>
     </Link>
   );
 }
