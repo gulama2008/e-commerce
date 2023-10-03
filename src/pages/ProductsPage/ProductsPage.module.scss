@@ -1,8 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
 .heading{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     &span{
         line-height:14px;
     }

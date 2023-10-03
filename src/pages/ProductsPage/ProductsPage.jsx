@@ -4,17 +4,17 @@ import styles from './ProductsPage.module.scss'
 const ProductsPage = ({ products,category}) => {
   console.log(products);
   return (
-    <div>
+    <div className={ styles.container}>
       <div className={ styles.heading}>
-        <h2>{category}</h2>
-        <span>({ products.length} results)</span>
+        <h2>{[category.charAt(0).toUpperCase(), category.slice(1, category.length)].join("")}</h2>
+        <span>{ products.length} products</span>
       </div>
 
-      <ul className={ styles.products_list}>
+      <div className={ styles.products_list}>
         {products.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}
-      </ul>
+      </div>
     </div>
   );
 }
