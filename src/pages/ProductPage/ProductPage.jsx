@@ -24,9 +24,9 @@ const ProductPage = ({ product,category }) => {
     setQuantityAdd(parseInt(e.target.value))
   }
   const addToCart = () => { 
-    setIsAddedToCart(true);
+    // setIsAddedToCart(true);
     // setQuantity(quantity - parseInt(quantityAdd));
-    setQuantityAdd(1);
+    
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
     const newItem = {
       ...product,
@@ -37,9 +37,9 @@ const ProductPage = ({ product,category }) => {
     console.log(newItem);
     // saveItemsToSessionStorage(newItem);
     updateCart(newItem);
+    setQuantityAdd(1);
   }
   console.log(itemsInCart);
-  // updateCart({id:123,size:12,quantity:5})
   return (
     <div>
       <div className={styles.container}>
