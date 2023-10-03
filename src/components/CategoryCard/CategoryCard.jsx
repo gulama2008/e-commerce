@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './CategoryCard.module.scss'
-const CategoryCard = ({ data}) => {
+const CategoryCard = ({ children}) => {
   return (
-    <div className={ styles.card}>Category</div>
+    <div className={styles.card}>{children}</div>
   )
 }
 

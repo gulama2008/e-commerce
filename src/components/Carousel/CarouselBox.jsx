@@ -5,10 +5,10 @@ import styles from "./CarouselBox.module.scss";
 
 const CarouselBox = () => {
   const carouselImages = [
-    "src/assets/carousel0.webp",
-    "src/assets/carousel1.jpeg",
-    "src/assets/carousel2.webp",
-    "src/assets/carousel3.webp",
+    "src/assets/banner0.webp",
+    "src/assets/banner1.webp",
+    "src/assets/banner2.webp",
+    "src/assets/banner3.jpeg",
   ];
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   // useEffect(() => {
@@ -44,16 +44,16 @@ const CarouselBox = () => {
     // </div>
     <Carousel autoplay>
       <div className={styles.container}>
-        <img src="src/assets/carousel0.webp" alt="" />
+        <img src={carouselImages[0]} alt="" />
       </div>
       <div className={styles.container}>
-        <img src="src/assets/carousel1.jpeg" alt="" />
+        <img src={carouselImages[1]} alt="" />
       </div>
       <div className={styles.container}>
-        <img src="src/assets/carousel2.jpeg" alt="" />
+        <img src={carouselImages[2]} alt="" />
       </div>
       <div className={styles.container}>
-        <img src="src/assets/carousel3.jpg" alt="" />
+        <img src={carouselImages[3]} alt="" />
       </div>
     </Carousel>
   );
