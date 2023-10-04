@@ -17,10 +17,10 @@ const ProductInCart = ({ item, isLastItem, index }) => {
     deleteItemInCart(copy);
   };
 
-    const changeQuantity = (e) => { 
-        setQuantityInCart(e.target.value);
-        changeItemQuantityInCart(index,parseInt(e.target.value))
-    }
+    // const changeQuantity = (e) => { 
+    //     setQuantityInCart(e.target.value);
+    //     changeItemQuantityInCart(index,parseInt(e.target.value))
+    // }
   return (
     <div className={containerClasses}>
       <img src={item.image} alt="" className={styles.img} />
