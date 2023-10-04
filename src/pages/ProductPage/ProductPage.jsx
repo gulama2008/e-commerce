@@ -10,17 +10,20 @@ import QuantityButton from "../../components/QuantityButton/QuantityButton";
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
-  const [activeSizeIndex, setActiveSizeIndex] = useState(0);
+  const [activeSizeIndex, setActiveSizeIndex] = useState(null);
+  const [isSizeChosen, setIsSizeChosen] = useState(true);
   const [quantity, setQuantity] = useState(product.quantity[0]);
   const [quantityAdd, setQuantityAdd] = useState(1);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
-  console.log(product);
-  console.log(activeSizeIndex);
-  console.log(product.size[activeSizeIndex]);
+  let btnClasses = styles.btn;
+  let activeBtnClasses = btnClasses += ` ${styles.btn_active}`;
+  
   const onClickSizeButton = (e) => {
     setQuantityAdd(1);
+    setIsSizeChosen(true);
     const index = e.target.getAttribute("index");
+    console.log(index);
     setActiveSizeIndex(index);
     setQuantity(product.quantity[index]);
   };
@@ -36,7 +39,10 @@ const ProductPage = ({ product, category }) => {
   const addToCart = () => {
     // setIsAddedToCart(true);
     // setQuantity(quantity - parseInt(quantityAdd));
-
+    if (!activeSizeIndex) { 
+      setIsSizeChosen(false);
+      return;
+    }
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
     const newItem = {
       ...product,
@@ -51,7 +57,7 @@ const ProductPage = ({ product, category }) => {
   };
   console.log(itemsInCart);
   return (
-    <div>
+    <div className={styles.page}>
       <div className={styles.container}>
         <img src={product.image} alt="" className={styles.img} />
         <div className={styles.info}>
@@ -59,12 +65,17 @@ const ProductPage = ({ product, category }) => {
           <p className={styles.info_price}>${toFloat(product.price)}</p>
           <div>
             {product.size.map((size, index) => {
+              console.log(index);
+              console.log(activeSizeIndex);
+              console.log(index == activeSizeIndex);
               return (
                 <button
                   key={index}
                   index={index}
                   onClick={onClickSizeButton}
-                  className={styles.btn}
+                  className={
+                    index == activeSizeIndex ? styles.btn_active : styles.btn
+                  }
                 >
                   {size}
                 </button>
@@ -83,7 +94,7 @@ const ProductPage = ({ product, category }) => {
             <input
               type="text"
               className={styles.quantity_input}
-              value={ quantityAdd}
+              value={quantityAdd}
               onChange={changeQuantityPurchase}
             />
             <button
@@ -95,12 +106,23 @@ const ProductPage = ({ product, category }) => {
             </button>
             {quantity == 0 && <p>Sorry, no stock left</p>}
           </div>
-          <button onClick={addToCart} disabled={quantity == 0} className={ styles.add}>
-            Add to Cart
-          </button>
+          <div className={ styles.add} >
+            <button
+              onClick={addToCart}
+              disabled={quantity == 0}
+              className={styles.add_btn}
+            >
+              ADD TO CART
+            </button>
+            {!isSizeChosen && (
+              <p className={styles.warning}>Please choose a size</p>
+            )}
+          </div>
         </div>
       </div>
-      <NavLink to={`/${category}`}>Back</NavLink>
+      <NavLink to={`/${category}`}>
+        <button className={styles.back}>back</button>
+      </NavLink>
     </div>
   );
 };
