@@ -1,11 +1,29 @@
+@use '../../partials/mixins';
 .container{
     height: 400px;
     width: 100%;
-    background: #364d79
+    // background: #364d79;
     // display: flex;
     // align-items: center;
+    @include mixins.md-lg-screen {
+        height: 250px;
+  }
+
+  @include mixins.sm-md-screen {
+    height: 150px;
+  }
 }
 
-img{
+.img{
     width: 100%;
+    // min-height: 300px;
+    @include mixins.md-lg-screen {
+        width: 100%;
+        min-height: 250px;
+  }
+
+  @include mixins.sm-md-screen {
+    width: 100%;
+    min-height: 150px;
+  }
 }

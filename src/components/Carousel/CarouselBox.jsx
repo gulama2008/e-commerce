@@ -44,16 +44,16 @@ const CarouselBox = () => {
     // </div>
     <Carousel autoplay>
       <div className={styles.container}>
-        <img src={carouselImages[0]} alt="" />
+        <img src={carouselImages[0]} alt="" className={styles.img} />
       </div>
       <div className={styles.container}>
-        <img src={carouselImages[1]} alt="" />
+        <img src={carouselImages[1]} alt="" className={styles.img} />
       </div>
       <div className={styles.container}>
-        <img src={carouselImages[2]} alt="" />
+        <img src={carouselImages[2]} alt="" className={styles.img} />
       </div>
       <div className={styles.container}>
-        <img src={carouselImages[3]} alt="" />
+        <img src={carouselImages[3]} alt="" className={styles.img} />
       </div>
     </Carousel>
   );

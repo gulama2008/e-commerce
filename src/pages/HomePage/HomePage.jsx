@@ -28,7 +28,7 @@ const HomePage = () => {
         </NavLink>
         <NavLink to="/shoes">
           <div className={styles.card}>
-            <img src="src/assets/shoes.webp" alt="" className={styles.img} />
+            <img src="src/assets/shoes.avif" alt="" className={styles.img} />
             <div className={styles.title}>SHOES</div>
           </div>
         </NavLink>
