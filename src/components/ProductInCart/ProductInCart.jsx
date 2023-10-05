@@ -23,14 +23,19 @@ const ProductInCart = ({ item, isLastItem, index }) => {
     // }
   return (
     <div className={containerClasses}>
-      <img src={item.image} alt="" className={styles.img} />
-      <div className={styles.info}>
-        <p>{item.name}</p>
-        <p className={styles.info_small}>Size: {item.size}</p>
-        <p className={styles.info_small}>Unit price: ${toFloat(item.price)}</p>
-        <p className={styles.info_small}>Stock: {item.stock} left</p>
-        {/* <p>Subtotal: ${toFloat(item.price * item.quantity)}</p> */}
+      <div className={ styles.main}>
+        <img src={item.image} alt="" className={styles.img} />
+        <div className={styles.info}>
+          <p>{item.name}</p>
+          <p className={styles.info_small}>Size: {item.size}</p>
+          <p className={styles.info_small}>
+            Unit price: ${toFloat(item.price)}
+          </p>
+          <p className={styles.info_small}>Stock: {item.stock} left</p>
+          {/* <p>Subtotal: ${toFloat(item.price * item.quantity)}</p> */}
+        </div>
       </div>
+
       <div className={styles.edit}>
         <img
           src="src/assets/delete.png"

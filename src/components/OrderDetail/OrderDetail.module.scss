@@ -1,5 +1,5 @@
 @use "../../partials/colors";
-
+@use "../../partials/mixins";
 .container {
     align-self: flex-start;
   width: 300px;
@@ -8,6 +8,9 @@
   border: 1px solid colors.$border-color;
   border-radius: 8px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  @include mixins.md-lg-screen {
+        min-width: 550px;
+    }
 }
 .delivery_section {
   display: flex;

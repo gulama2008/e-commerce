@@ -1,4 +1,5 @@
 @use "../../partials/colors";
+@use '../../partials/mixins';
 .container {
   display: flex;
   justify-content: space-around;
@@ -8,6 +9,18 @@
   position: relative;
   flex-wrap: wrap;
   margin-bottom: 20px;
+
+  @include mixins.sm-md-screen {
+     flex-direction: column;
+     flex-wrap: nowrap;
+     margin-top: 30px;
+  }
+   
+}
+.main{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .img {
   max-width: 100px;
@@ -24,6 +37,10 @@
   position: absolute;
   top: 0;
   right: 0;
+  @include mixins.sm-md-screen {
+        top:-30px;
+        right: -10px;
+    }
 }
 .edit {
 width: 150px;
@@ -41,6 +58,13 @@ width: 150px;
     font-size: 14px;
     color: colors.$font-secondary;
   }
+  // @include mixins.md-lg-screen {
+  //       flex-direction: column;
+  // }
+
+  // @include mixins.sm-md-screen {
+  //    flex-direction: column;
+  // }
 }
 .size {
 }

@@ -1,36 +1,49 @@
-@use '../../partials/colors';
-
-.page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@use "../../partials/colors";
+@use "../../partials/mixins";
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.title{
-    text-align: center;
-    font-size: 30px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid colors.$border-color;
-    width: 80%;
+.title {
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid colors.$border-color;
+  width: 80%;
 }
-.container{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    
-    &_products{
-        width: 650px;
-        background-color: white;
-        padding: 24px 28px;
-        border: 1px solid colors.$border-color;
-        border-radius: 8px;
-        align-self: flex-start;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+@include mixins.md-lg-screen {
+       flex-direction: column;
     }
+
+    @include mixins.sm-md-screen {
+    }
+  &_products {
+    width: 650px;
+    background-color: white;
+    padding: 24px 28px;
+    border: 1px solid colors.$border-color;
+    border-radius: 8px;
+    align-self: flex-start;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    @include mixins.md-lg-screen {
+        width: 550px;
+    }
+
+    @include mixins.sm-md-screen {
+        width: 300px;
+        
+    }
+  }
 }
 
-.empty{
-    text-align: center;
+.empty {
+  text-align: center;
 }
