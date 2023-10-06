@@ -15,6 +15,7 @@ const ProductPage = ({ product, category }) => {
   const [isSizeChosen, setIsSizeChosen] = useState(true);
   const [quantity, setQuantity] = useState(product.quantity[0]);
   const [quantityAdd, setQuantityAdd] = useState(1);
+  const [quantityInStock, setQuantityInStock] = useState(product.quantity);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
   let btnClasses = styles.btn;
@@ -53,8 +54,10 @@ const ProductPage = ({ product, category }) => {
     };
     console.log(newItem);
     // saveItemsToSessionStorage(newItem);
-    const newQuantityArray = [...product.quantity];
-    newQuantityArray[activeSizeIndex] = quantity - parseInt(quantityAdd);
+    const newQuantityArray = [...quantityInStock];
+    newQuantityArray[activeSizeIndex] =
+      newQuantityArray[activeSizeIndex] - parseInt(quantityAdd);
+    setQuantityInStock(newQuantityArray);
     updateStock(product.id, newQuantityArray);
     updateCart(newItem);
     setQuantityAdd(1);
@@ -86,7 +89,7 @@ const ProductPage = ({ product, category }) => {
               );
             })}
           </div>
-          <p className={styles.info_stock}>In stock: {quantity} left</p>
+          {activeSizeIndex!==null&&<p className={styles.info_stock}>In stock: {quantityInStock[activeSizeIndex]} left</p>}
           <div className={styles.quantity}>
             <button
               className={styles.quantity_btn}
