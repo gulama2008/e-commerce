@@ -29,15 +29,6 @@ export const getAllProducts = async () => {
 export const getProductsByCategory = async (category) => {
     const q = query(collection(db, "products"), where("type", "==", category));
     const querySnapshot = await getDocs(q);
-    // querySnapshot.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, " => ", doc.data());
-    // });
-    // if (!querySnapshot.exists()) {
-    //     // throw error if it doesn't exist
-    //     throw new Error("Category not found");
-    // }
-    // or return all the data we need
     console.log(querySnapshot.docs);
     const cleanedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     console.log(cleanedData);
@@ -56,4 +47,42 @@ export const getProductById = async (id) => {
   }
   // or return all the data we need
   return { id: querySnapshot.id, ...querySnapshot.data() };
+};
+
+export const changeFavouriteStatusById = async (id,newValue) => {
+  try {
+    const docRef = doc(db, "products", id);
+    await updateDoc(docRef, {
+      isFavourited: newValue,
+    });
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+export const getProductsByIsFavourited = async () => {
+  const q = query(collection(db, "products"), where("isFavourited", "==", true));
+  const querySnapshot = await getDocs(q);
+  console.log(querySnapshot.docs);
+  const cleanedData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  console.log(cleanedData);
+  return cleanedData;
+};
+
+export const subscribeToProducts = (callback) => {
+  const collectionRef = collection(db, "products");
+  const unsubscribe = onSnapshot(collectionRef, (snapshot) => {
+    const productsData = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    callback(productsData);
+  });
+
+  return unsubscribe;
 };

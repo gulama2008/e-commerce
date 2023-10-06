@@ -1,5 +1,15 @@
 @use '../../partials/colors';
 @use '../../partials/mixins';
+.container{
+    display: flex;
+    flex-direction: column;
+    @include mixins.md-lg-screen {
+        width: 40%;
+        padding: 0px;
+        // margin-bottom: 40px;
+        // margin-top: 40px;
+  }
+}
 .card{
     display: flex;
     flex-direction: column;
@@ -11,19 +21,14 @@
     text-decoration: none;
     color: black;
     gap: 10px;
-    // border: 1px solid colors.$border-color;
+    // position: relative;
     &_name{
         font-size: 12px;
     }
     &_price{
         font-weight: 500;
     }
-     @include mixins.md-lg-screen {
-        width: 40%;
-        padding: 0px;
-        // margin-bottom: 40px;
-        // margin-top: 40px;
-  }
+     
 
   @include mixins.sm-md-screen {
     
@@ -33,5 +38,10 @@
 .img{
     max-width: 90%;
     max-height: 80%;
+    
+}
+.fav{
+    width: 20px;
+    cursor: pointer;
     
 }

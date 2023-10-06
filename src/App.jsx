@@ -7,6 +7,7 @@ import ProductsPageLoader from './containers/ProductsPageLoader/ProductsPageLoad
 import ProductPageLoader from './containers/ProductPageLoader/ProductPageLoader';
 import CartPageLoader from './containers/CartPageLoader/CartPageLoader';
 import Cart from './pages/Cart/Cart';
+import Favourites from './pages/Favourites/Favourites';
 
 function App() {
   
@@ -17,9 +18,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/:category" element={<ProductsPageLoader/>} />
+          <Route path="/:category" element={<ProductsPageLoader />} />
           <Route path="/:category/:id" element={<ProductPageLoader />} />
-          <Route path="/cart" element={<Cart/>} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favourites" element={<Favourites />} />
         </Routes>
       </BrowserRouter>
     </ProductsContextProvider>

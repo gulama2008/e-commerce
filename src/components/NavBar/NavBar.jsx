@@ -24,14 +24,11 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className={styles.icon}>
-        <NavLink
-        // to="cart"
-        // className={styles.navlinks_link}
-        >
+        <NavLink to="favourites">
           <img src="src/assets/fav1.png" alt="" className={styles.icon_fav} />
         </NavLink>
         <NavLink
-        // to="cart"
+
         // className={styles.navlinks_link}
         >
           <img src="src/assets/user.png" alt="" className={styles.icon_fav} />
