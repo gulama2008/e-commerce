@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import { createContext } from "react";
-import { getAllProducts } from "../services/products-service";
+import { addProductInCart, getAllProducts,subscribeToProducts } from "../services/products-service";
 import { saveItemsToSessionStorage } from "../services/data-service";
 export const ProductsContext = createContext(null);
 
@@ -14,7 +14,9 @@ const ProductsContextProvider = ({ children}) => {
   }
 
   const updateCart = (newItem) => {
+    console.log(newItem);
     if (itemsInCart.length === 0) { 
+      // addProductInCart(newItem);
       return setItemsInCart([newItem]);
     }
     const copy = itemsInCart.map(item => ({ ...item }));
@@ -24,6 +26,7 @@ const ProductsContextProvider = ({ children}) => {
     sameItemIndex == -1 ? copy.push(newItem) : copy[sameItemIndex].quantity += newItem.quantity;
     saveItemsToSessionStorage(copy);
     setItemsInCart(copy);
+
   }
 
   const deleteItemInCart = (newItemsArray) => { 
@@ -36,9 +39,15 @@ const ProductsContextProvider = ({ children}) => {
     setItemsInCart(copy);
   }
 
+  // useEffect(() => {
+  //   refreshProducts();
+  // }, []);
+
   useEffect(() => {
-    refreshProducts();
+    const unsub = subscribeToProducts(setProducts);
+    return () => unsub();
   }, []);
+
   return (
       <ProductsContext.Provider value={{ products, setProducts,refreshProducts,itemsInCart,updateCart,deleteItemInCart,changeItemQuantityInCart }}>{children}</ProductsContext.Provider>
   )

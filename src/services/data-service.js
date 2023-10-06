@@ -16,3 +16,8 @@ export const saveItemsToSessionStorage = (newItems) => {
 export const toFloat = (num) => {
   return (Math.round(num * 100) / 100).toFixed(2);
 };
+
+export const getItemsFromSessionStorage = () => { 
+  const currentItemsInCart = window.sessionStorage.getItem("cart");
+  return currentItemsInCart?currentItemsInCart:[];
+}

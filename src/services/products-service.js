@@ -86,3 +86,43 @@ export const subscribeToProducts = (callback) => {
 
   return unsubscribe;
 };
+
+export const updateStock = async (id, quantity) => {
+  try {
+    const docRef = doc(db, "products", id);
+    await updateDoc(docRef, {
+      quantity: quantity,
+    });
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+export const addProductInCart = async (data) => {
+  try {
+    // const newProduct = { ...data };
+    const collectionRef = collection(db, "cart", data);
+    const newProductRef = await addDoc(collectionRef, data);
+    // return the created Movie
+    return { id: newProductRef, ...data };
+  } catch (e) {
+    // if i need to I can log etc here
+    console.log(e);
+    throw e;
+  }
+};
+
+export const updateProductInCart = async (id, quantity) => {
+  try {
+    const docRef = doc(db, "cart", id);
+    await updateDoc(docRef, {
+      quantity: quantity,
+    });
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};

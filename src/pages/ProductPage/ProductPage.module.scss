@@ -69,9 +69,11 @@
 .quantity{
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
     &_btn{
         border: none;
+        height: 32px;
         width: 30px;
         background-color: colors.$border-color;
         font-size: 25px;
@@ -121,4 +123,9 @@
     position: absolute;
     margin:15px;
 
+}
+
+.outOfStock{
+  color: red;
+  margin-left: 10px;
 }

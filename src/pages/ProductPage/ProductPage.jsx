@@ -7,6 +7,7 @@ import {
 } from "../../services/data-service";
 import { NavLink } from "react-router-dom";
 import QuantityButton from "../../components/QuantityButton/QuantityButton";
+import { updateStock } from "../../services/products-service";
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -25,7 +26,8 @@ const ProductPage = ({ product, category }) => {
     const index = e.target.getAttribute("index");
     console.log(index);
     setActiveSizeIndex(index);
-    setQuantity(product.quantity[index]);
+    // setQuantity(product.quantity[index]);
+    setQuantity(quantity);
   };
   const changeQuantityPurchase = (e) => {
     setQuantityAdd(parseInt(e.target.value));
@@ -38,11 +40,12 @@ const ProductPage = ({ product, category }) => {
   };
   const addToCart = () => {
     // setIsAddedToCart(true);
-    // setQuantity(quantity - parseInt(quantityAdd));
+    
     if (!activeSizeIndex) { 
       setIsSizeChosen(false);
       return;
     }
+    setQuantity(quantity - parseInt(quantityAdd));
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
     const newItem = {
       ...product,
@@ -51,8 +54,13 @@ const ProductPage = ({ product, category }) => {
       stock: quantity,
     };
     console.log(newItem);
-    // saveItemsToSessionStorage(newItem);
+    saveItemsToSessionStorage(newItem);
+    const newQuantityArray = [...product.quantity];
+    newQuantityArray[activeSizeIndex] = quantity - parseInt(quantityAdd);
+    updateStock(product.id, newQuantityArray);
     updateCart(newItem);
+    
+    console.log(newItem);
     setQuantityAdd(1);
   };
   console.log(itemsInCart);
@@ -104,7 +112,7 @@ const ProductPage = ({ product, category }) => {
             >
               +
             </button>
-            {quantity == 0 && <p>Sorry, no stock left</p>}
+            {quantity == 0 && <p className={ styles.outOfStock}> Sorry, this product is out of stock</p>}
           </div>
           <div className={ styles.add} >
             <button

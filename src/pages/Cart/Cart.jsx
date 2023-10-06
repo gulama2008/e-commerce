@@ -3,9 +3,13 @@ import ProductInCart from "../../components/ProductInCart/ProductInCart";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./Cart.module.scss";
+import { getItemsFromSessionStorage } from "../../services/data-service";
 const Cart = () => {
   const { itemsInCart } = useContext(ProductsContext);
-  useEffect(() => {}, [itemsInCart]);
+  
+  useEffect(() => {
+    const itemsInSessionStorage = getItemsFromSessionStorage();
+  }, [itemsInCart]);
   let lastItemIndex = itemsInCart.length - 1;
 
   console.log(itemsInCart);
