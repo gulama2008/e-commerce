@@ -1,6 +1,10 @@
 import { useState,useEffect } from "react";
 import { createContext } from "react";
-import { getAllProducts } from "../services/products-service";
+import {
+  addProductInCart,
+  getAllProducts,
+  subscribeToProducts,
+} from "../services/products-service";
 import { saveItemsToSessionStorage } from "../services/data-service";
 export const ProductsContext = createContext(null);
 
@@ -37,7 +41,9 @@ const ProductsContextProvider = ({ children}) => {
   }
 
   useEffect(() => {
-    refreshProducts();
+    // refreshProducts();
+    const unsub = subscribeToProducts(setProducts);
+    return () => unsub();
   }, []);
   return (
       <ProductsContext.Provider value={{ products, setProducts,refreshProducts,itemsInCart,updateCart,deleteItemInCart,changeItemQuantityInCart }}>{children}</ProductsContext.Provider>

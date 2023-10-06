@@ -1,10 +1,10 @@
-@use '../../partials/colors';
-@use '../../partials/mixins';
-.page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+@use "../../partials/colors";
+@use "../../partials/mixins";
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
 }
 
 .container {
@@ -14,13 +14,13 @@
   gap: 20px;
   margin-top: 50px;
   @include mixins.md-lg-screen {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   @include mixins.sm-md-screen {
     flex-direction: column;
   }
-//   height: 60%;
+  //   height: 60%;
 }
 
 .info {
@@ -29,21 +29,19 @@
   flex-direction: column;
   justify-content: space-around;
   gap: 20px;
-  align-items:flex-start;
-  &_name{
+  align-items: flex-start;
+  &_name {
     font-size: 30px;
   }
-  &_price{
+  &_price {
     font-size: 18px;
   }
-  &_stock{
-
+  &_stock {
   }
-  
 }
 
 .img {
-//   width: 25%;
+  //   width: 25%;
   height: 80%;
 }
 .btn {
@@ -57,7 +55,7 @@
 }
 
 .btn_active {
-    margin-right: 10px;
+  margin-right: 10px;
   height: 40px;
   width: 100px;
   border: 1px solid colors.$border-color;
@@ -66,59 +64,64 @@
   background-color: colors.$btn-active;
 }
 
-.quantity{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    &_btn{
-        border: none;
-        width: 30px;
-        background-color: colors.$border-color;
-        font-size: 25px;
-        cursor: pointer;
-    }
-    &_input{
-        border: 1px solid colors.$border-color;
-        height: 30px;
-        width: 50px;
-        text-align: center;
-    }
-}
-.add{
-    width: 100%;
-    position: relative;
-}
-.add_btn{
-    height: 50px;
-    width: 100%;
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &_btn {
     border: none;
-    color: white;
-    background-color:#a386be;
-    // border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+    width: 30px;
+    height: 32px;
+    background-color: colors.$border-color;
+    font-size: 25px;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    &:hover{
-        background-color: #9c72c4;
-    }
-    &:active{
-        // border-bottom: none;
-        box-shadow: none;
-    }
-
+  }
+  &_input {
+    border: 1px solid colors.$border-color;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+  }
 }
-.back{
-    height: 50px;
-    width: 150px;
-    font-size: 20px;
-    background-color:colors.$main-color;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+.add {
+  width: 100%;
+  position: relative;
 }
-.warning{
-    color: red;
-    position: absolute;
-    margin:15px;
+.add_btn {
+  height: 50px;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #a386be;
+  // border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  &:hover {
+    background-color: #9c72c4;
+  }
+  &:active {
+    // border-bottom: none;
+    box-shadow: none;
+  }
+}
+.back {
+  height: 50px;
+  width: 150px;
+  font-size: 20px;
+  background-color: colors.$main-color;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.warning {
+  color: red;
+  position: absolute;
+  margin: 15px;
+}
 
+.outOfStock {
+  color: red;
+  margin-left: 10px;
 }
