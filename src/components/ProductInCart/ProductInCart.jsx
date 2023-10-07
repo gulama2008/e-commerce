@@ -3,15 +3,25 @@ import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./ProductInCart.module.scss";
 import { toFloat } from "../../services/data-service";
 import QuantityButton from "../QuantityButton/QuantityButton";
+import { updateStock } from "../../services/products-service";
 const ProductInCart = ({ item, isLastItem, index }) => {
-  const { itemsInCart, deleteItemInCart, changeItemQuantityInCart } =
-    useContext(ProductsContext);
+  const {
+    itemsInCart,
+    deleteItemInCart,
+    updateCart,
+    changeItemQuantityInCart,
+    products,
+  } = useContext(ProductsContext);
   const [quantityInCart, setQuantityInCart] = useState(item.quantity);
   let containerClasses = styles.container;
   if (!isLastItem) {
     containerClasses += ` ${styles.withBottomBorder}`;
   }
   const deleteItem = () => {
+    const itemAddBack = products.find(product => product.id == item.id);
+    const sizeIndex = itemAddBack.size.findIndex(size => size == item.size);
+    itemAddBack.quantity[sizeIndex] += item.quantity;
+    updateStock(itemAddBack.id, itemAddBack.quantity);
     const copy = [...itemsInCart];
     copy.splice(index, 1);
     deleteItemInCart(copy);

@@ -4,7 +4,13 @@ import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./Cart.module.scss";
 const Cart = () => {
-  const { itemsInCart } = useContext(ProductsContext);
+  const {
+    itemsInCart,
+    deleteItemInCart,
+    updateCart,
+    changeItemQuantityInCart,
+    products,
+  } = useContext(ProductsContext);
   useEffect(() => {}, [itemsInCart]);
   let lastItemIndex = itemsInCart.length - 1;
 
