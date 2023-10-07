@@ -1,6 +1,6 @@
 export const getItemsInCart = () => {
     const currentItemsInCart = JSON.parse(window.sessionStorage.getItem("cart"));
-  return currentItemsInCart;
+  return currentItemsInCart?currentItemsInCart:[];
 }
 
 export const saveItemsToSessionStorage = (itemsInCart) => {

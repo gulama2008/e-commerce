@@ -20,6 +20,7 @@ const ProductsContextProvider = ({ children}) => {
 
   const updateCart = (newItem) => {
     if (itemsInCart.length === 0) { 
+      saveItemsToSessionStorage([newItem]);
       return setItemsInCart([newItem]);
     }
     const copy = itemsInCart.map(item => ({ ...item }));

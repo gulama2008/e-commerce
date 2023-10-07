@@ -5,13 +5,7 @@ import { ProductsContext } from '../../context/ProductsContextProvider';
 import { saveItemsToSessionStorage } from '../../services/data-service';
 
 const Finish = () => {
-  const { itemsInCart, setItemsInCart, setItemsInSessionStorage } =
-    useContext(ProductsContext);
-  const clearCart = () => {
-    setItemsInCart([]);
-    saveItemsToSessionStorage([]);
-    setItemsInSessionStorage([]);
-  };
+  
     return (
       <div className={styles.container}>
         <h1 className={styles.heading}>THANK YOU!</h1>
@@ -20,7 +14,7 @@ const Finish = () => {
         </p>
         <img src="src/assets/finish.png" alt="" />
         <NavLink to='/'>
-          <button className={styles.back} onClick={clearCart}>back</button>
+          <button className={styles.back} >back</button>
         </NavLink>
       </div>
     );

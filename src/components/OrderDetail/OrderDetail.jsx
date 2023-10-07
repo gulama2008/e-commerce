@@ -1,11 +1,18 @@
 import React, { useContext, useState } from 'react'
 import { ProductsContext } from '../../context/ProductsContextProvider'
 import styles from './OrderDetail.module.scss'
-import { toFloat } from '../../services/data-service';
+import {
+  toFloat,
+  saveItemsToSessionStorage,
+} from "../../services/data-service";
 import { NavLink } from 'react-router-dom';
 const OrderDetail = () => {
-  const { itemsInCart, setItemsInCart, itemsInSessionStorage } =
-    useContext(ProductsContext);
+  const {
+    itemsInCart,
+    setItemsInCart,
+    itemsInSessionStorage,
+    setItemsInSessionStorage,
+  } = useContext(ProductsContext);
   const [deliveryCost, setDeliveryCost] = useState(5);
 
   const changeDelivery = (e) => { 
@@ -23,6 +30,8 @@ const OrderDetail = () => {
 
   const proceedPurchase = () => { 
     setItemsInCart([]);
+    saveItemsToSessionStorage([]);
+    setItemsInSessionStorage([]);
   }
 
   return (
