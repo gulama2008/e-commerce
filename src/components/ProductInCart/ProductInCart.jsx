@@ -11,6 +11,7 @@ const ProductInCart = ({ item, isLastItem, index }) => {
     updateCart,
     changeItemQuantityInCart,
     products,
+    
   } = useContext(ProductsContext);
   const [quantityInCart, setQuantityInCart] = useState(item.quantity);
   let containerClasses = styles.container;

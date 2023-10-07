@@ -1,16 +1,16 @@
-// export const getItemsInCart = () => {
-//     const currentItemsInCart = window.sessionStorage.getItem("cart");
-//     return currentItemsInCart ? currentItemsInCart : [];
-// }
+export const getItemsInCart = () => {
+    const currentItemsInCart = JSON.parse(window.sessionStorage.getItem("cart"));
+  return currentItemsInCart;
+}
 
-export const saveItemsToSessionStorage = (newItems) => {
-  let itemsList = [];
-  const currentItemsInCart = window.sessionStorage.getItem("cart");
-  if (currentItemsInCart) {
-    itemsList = JSON.parse(currentItemsInCart);
-  }
-  itemsList.push(newItems);
-  window.sessionStorage.setItem("cart", JSON.stringify(itemsList));
+export const saveItemsToSessionStorage = (itemsInCart) => {
+  // let itemsList = [];
+  // const currentItemsInCart = window.sessionStorage.getItem("cart");
+  // if (currentItemsInCart) {
+  //   itemsList = JSON.parse(currentItemsInCart);
+  // }
+  // itemsList.push(newItems);
+  window.sessionStorage.setItem("cart", JSON.stringify(itemsInCart));
 };
 
 export const toFloat = (num) => {

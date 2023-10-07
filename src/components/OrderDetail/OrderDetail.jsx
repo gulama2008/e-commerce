@@ -4,7 +4,8 @@ import styles from './OrderDetail.module.scss'
 import { toFloat } from '../../services/data-service';
 import { NavLink } from 'react-router-dom';
 const OrderDetail = () => {
-  const { itemsInCart,setItemsInCart } = useContext(ProductsContext);
+  const { itemsInCart, setItemsInCart, itemsInSessionStorage } =
+    useContext(ProductsContext);
   const [deliveryCost, setDeliveryCost] = useState(5);
 
   const changeDelivery = (e) => { 
@@ -12,7 +13,7 @@ const OrderDetail = () => {
   }
 
   const total = parseInt(
-    itemsInCart.reduce((a, b) => {
+    itemsInSessionStorage.reduce((a, b) => {
       return a + b.price * b.quantity;
     }, 0)
   );

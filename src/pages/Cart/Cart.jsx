@@ -3,6 +3,7 @@ import ProductInCart from "../../components/ProductInCart/ProductInCart";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./Cart.module.scss";
+import { getItemsInCart } from "../../services/data-service";
 const Cart = () => {
   const {
     itemsInCart,
@@ -10,18 +11,19 @@ const Cart = () => {
     updateCart,
     changeItemQuantityInCart,
     products,
+    itemsInSessionStorage,
   } = useContext(ProductsContext);
   useEffect(() => {}, [itemsInCart]);
   let lastItemIndex = itemsInCart.length - 1;
-
+console.log(itemsInSessionStorage);
   console.log(itemsInCart);
   return (
     <div className={styles.page }>
       <p className={ styles.title}>Shopping Cart</p>
-      {itemsInCart.length > 0 ? (
+      {itemsInSessionStorage.length > 0 ? (
         <div className={styles.container}>
           <div className={styles.container_products}>
-            {itemsInCart.map((item, index) => {
+            {itemsInSessionStorage.map((item, index) => {
               return (
                 <ProductInCart
                   item={item}
