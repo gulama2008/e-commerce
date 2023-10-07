@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react'
 import { ProductsContext } from '../../context/ProductsContextProvider'
 import styles from './OrderDetail.module.scss'
 import { toFloat } from '../../services/data-service';
+import { NavLink } from 'react-router-dom';
 const OrderDetail = () => {
-  const { itemsInCart } = useContext(ProductsContext);
+  const { itemsInCart,setItemsInCart } = useContext(ProductsContext);
   const [deliveryCost, setDeliveryCost] = useState(5);
 
   const changeDelivery = (e) => { 
@@ -18,6 +19,11 @@ const OrderDetail = () => {
   const totalFloat = toFloat(total);
   const deliveryCostFloat = toFloat(deliveryCost);
   const payable = toFloat(total + deliveryCost);
+
+  const proceedPurchase = () => { 
+    setItemsInCart([]);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.delivery_section}>
@@ -59,18 +65,22 @@ const OrderDetail = () => {
       <div className={styles.summary_section}>
         <h3 className={styles.title}>Order Details</h3>
         <div className={styles.summary}>
-          <span >Item Total</span>
+          <span>Item Total</span>
           <span>${totalFloat}</span>
         </div>
         <div className={styles.summary}>
           <span>Delivery Cost</span>
           <span>${deliveryCostFloat}</span>
         </div>
-        <div className={[styles.summary,styles.summary_total].join(' ')}>
+        <div className={[styles.summary, styles.summary_total].join(" ")}>
           <h4>Order Total</h4>
-          <h4>${ payable}</h4>
+          <h4>${payable}</h4>
         </div>
-        <button className={ styles.btn}>PROCEED TO CHECKOUT</button>
+        <NavLink to="/finish">
+          <button className={styles.btn} onClick={proceedPurchase}>
+            PROCEED TO CHECKOUT
+          </button>
+        </NavLink>
       </div>
     </div>
   );

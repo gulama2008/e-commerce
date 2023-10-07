@@ -46,8 +46,20 @@ const ProductsContextProvider = ({ children}) => {
     return () => unsub();
   }, []);
   return (
-      <ProductsContext.Provider value={{ products, setProducts,refreshProducts,itemsInCart,updateCart,deleteItemInCart,changeItemQuantityInCart }}>{children}</ProductsContext.Provider>
-  )
+    <ProductsContext.Provider
+      value={{
+        products,
+        setProducts,
+        refreshProducts,
+        itemsInCart,
+        setItemsInCart,updateCart,
+        deleteItemInCart,
+        changeItemQuantityInCart,
+      }}
+    >
+      {children}
+    </ProductsContext.Provider>
+  );
 }
 
 export default ProductsContextProvider
