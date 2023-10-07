@@ -19,13 +19,13 @@ const ProductPage = ({ product, category }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
   let btnClasses = styles.btn;
-  let activeBtnClasses = btnClasses += ` ${styles.btn_active}`;
-  
+  let activeBtnClasses = (btnClasses += ` ${styles.btn_active}`);
+
   const onClickSizeButton = (e) => {
     setQuantityAdd(1);
     setIsSizeChosen(true);
     const index = e.target.getAttribute("index");
-    console.log(index);
+    // console.log(index);
     setActiveSizeIndex(index);
     setQuantity(product.quantity[index]);
   };
@@ -33,14 +33,22 @@ const ProductPage = ({ product, category }) => {
     setQuantityAdd(parseInt(e.target.value));
   };
   const increaseQuantity = (e) => {
-    setQuantityAdd(quantityAdd+1)
+    if (!activeSizeIndex) { 
+      setIsSizeChosen(false);
+      return;
+    }
+    setQuantityAdd(quantityAdd + 1);
   };
   const decreaseQuantity = (e) => {
-    setQuantityAdd(quantityAdd-1)
+    if (!activeSizeIndex) {
+      setIsSizeChosen(false);
+      return;
+    }
+    setQuantityAdd(quantityAdd - 1);
   };
   const addToCart = () => {
     // setIsAddedToCart(true);
-    if (!activeSizeIndex) { 
+    if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
     }
@@ -89,7 +97,11 @@ const ProductPage = ({ product, category }) => {
               );
             })}
           </div>
-          {activeSizeIndex!==null&&<p className={styles.info_stock}>In stock: {quantityInStock[activeSizeIndex]} left</p>}
+          {activeSizeIndex !== null && (
+            <p className={styles.info_stock}>
+              In stock: {quantityInStock[activeSizeIndex]} left
+            </p>
+          )}
           <div className={styles.quantity}>
             <button
               className={styles.quantity_btn}
