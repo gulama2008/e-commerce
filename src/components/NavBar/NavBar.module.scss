@@ -1,11 +1,18 @@
 @use '../../partials/colors';
+@use "../../partials/mixins";
+.container{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: colors.$main-color;
+    // height: 50px;
+}
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    background-color: colors.$main-color;
 }
+
 .logo{
     // font-family: 'Shrikhand', cursive;
     font-family: 'Schoolbell', cursive;;
@@ -19,6 +26,14 @@
         width: 30px;
         margin-left: 10px;
 
+    }
+    @include mixins.md-lg-screen {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+    @include mixins.sm-md-screen{
+        font-size: 25px;
+        margin-left: 10px;
     }
 }
 
@@ -34,6 +49,12 @@
         font-family: 'Open Sans', sans-serif;
         // font-weight: 400;
     }
+    @include mixins.md-lg-screen {
+        display: none;
+    }
+    @include mixins.sm-md-screen{
+        display: none;
+    }
 }
 .icon{
     margin-right: 50px;
@@ -46,8 +67,27 @@
     &_fav{
         width: 25px;
     }
+    @include mixins.md-lg-screen {
+        margin-right: 20px;
+    }
+    @include mixins.sm-md-screen{
+        margin-right: 20px;
+    }
 }
 
 .cart{
         
     }
+
+.hamburger{
+    display: none;
+    @include mixins.md-lg-screen {
+        display: block;
+        margin-left: 50px;
+        // z-index: 10;
+        }
+    @include mixins.sm-md-screen{
+        display: block;
+        margin-left: 20px;
+    }
+}
