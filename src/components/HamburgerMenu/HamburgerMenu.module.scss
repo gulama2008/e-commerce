@@ -1,7 +1,9 @@
-@use '../../partials/colors';
+@use "../../partials/colors";
 @use "../../partials/mixins";
 
-.container{
+.container {
+  display: none;
+  @include mixins.md-lg-screen {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
@@ -11,9 +13,21 @@
     gap: 20px;
     text-decoration: none;
     padding: 20px;
-
-}
-.link{
-    color: white;
+  }
+  @include mixins.sm-md-screen {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background-color: colors.$main-color;
+    gap: 20px;
     text-decoration: none;
+    padding: 20px;
+  }
+  
+}
+.link {
+  color: white;
+  text-decoration: none;
 }
