@@ -5,13 +5,14 @@ import {
   getAllProducts,
   subscribeToProducts,
 } from "../services/products-service";
-import { getItemsInCart, saveItemsToSessionStorage } from "../services/data-service";
+import { getItemsInCart, getQuantity, getQuantityInCart, saveItemsToSessionStorage } from "../services/data-service";
 export const ProductsContext = createContext(null);
 
 const ProductsContextProvider = ({ children}) => {
   const [products, setProducts] = useState([]);
   const [itemsInCart, setItemsInCart] = useState(getItemsInCart());
   const [itemsInSessionStorage, setItemsInSessionStorage] = useState(getItemsInCart());
+  const [quantityInCart, setQuantityInCart] = useState(getQuantityInCart());
   const refreshProducts = () => { 
     getAllProducts()
       .then(products => setProducts(products))
@@ -43,10 +44,16 @@ const ProductsContextProvider = ({ children}) => {
     saveItemsToSessionStorage(copy)
     setItemsInCart(copy);
   }
+
+  const quantityShownOnCart = () => { 
+    setQuantityInCart(getQuantityInCart());
+  }
+
   useEffect(() => {
     
     const newItemsListInSessionStorage = getItemsInCart();
     setItemsInSessionStorage(newItemsListInSessionStorage);
+    setQuantityInCart(getQuantity(newItemsListInSessionStorage, 'quantity'));
   }, [itemsInCart])
 
   useEffect(() => {
@@ -67,6 +74,8 @@ const ProductsContextProvider = ({ children}) => {
         changeItemQuantityInCart,
         itemsInSessionStorage,
         setItemsInSessionStorage,
+        quantityInCart,
+        setQuantityInCart,
       }}
     >
       {children}

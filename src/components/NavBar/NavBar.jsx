@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 import Hamburger from "../Hamburger/Hamburger";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { ProductsContext } from "../../context/ProductsContextProvider";
 const NavBar = () => {
+  const { quantityInCart, setQuantityInCart } = useContext(ProductsContext);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [totalQuantity,setTotalQuantity]=useState()
   const toggleHamburger = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
@@ -49,13 +52,14 @@ const NavBar = () => {
           </NavLink>
           <NavLink
             to="cart"
-            // className={styles.navlinks_link}
+            className={styles.cart}
           >
             <img
               src="src/assets/cart.png"
               alt=""
               className={styles.icon_cart}
             />
+            {quantityInCart!==0&&<div className={styles.quantity}>{quantityInCart}</div>}
           </NavLink>
         </div>
       </div>
