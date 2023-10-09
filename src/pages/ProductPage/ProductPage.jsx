@@ -7,7 +7,7 @@ import {
 } from "../../services/data-service";
 import { NavLink } from "react-router-dom";
 import QuantityButton from "../../components/QuantityButton/QuantityButton";
-import { updateStock } from "../../services/products-service";
+import { changeFavouriteStatusById, updateStock } from "../../services/products-service";
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -18,6 +18,7 @@ const ProductPage = ({ product, category }) => {
   const [quantityInStock, setQuantityInStock] = useState(product.quantity);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
+  const [isFavourite, setIsFavourite] = useState(product.isFavourited);
   let btnClasses = styles.btn;
   let activeBtnClasses = (btnClasses += ` ${styles.btn_active}`);
 
@@ -70,6 +71,10 @@ const ProductPage = ({ product, category }) => {
     updateCart(newItem);
     setQuantityAdd(1);
   };
+  const changeFavourite = () => {
+    setIsFavourite(!isFavourite);
+    changeFavouriteStatusById(product.id, !isFavourite);
+  };
   console.log(itemsInCart);
   return (
     <div className={styles.page}>
@@ -77,6 +82,12 @@ const ProductPage = ({ product, category }) => {
         <img src={product.image} alt="" className={styles.img} />
         <div className={styles.info}>
           <p className={styles.info_name}>{product.name}</p>
+          <img
+            src={isFavourite ? "src/assets/fav3.png" : "src/assets/fav2.png"}
+            alt=""
+            className={styles.fav}
+            onClick={changeFavourite}
+          />
           <p className={styles.info_price}>${toFloat(product.price)}</p>
           <div>
             {product.size.map((size, index) => {

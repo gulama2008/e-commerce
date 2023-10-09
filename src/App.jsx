@@ -9,6 +9,7 @@ import CartPageLoader from './containers/CartPageLoader/CartPageLoader';
 import Cart from './pages/Cart/Cart';
 import Favourites from './pages/Favourites/Favourites';
 import Finish from './pages/Finish/Finish';
+import Footer from './components/Footer/Footer';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
           <Route path="/favourites" element={<Favourites />} />
           <Route path='/finish' element={ <Finish/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </ProductsContextProvider>
   );

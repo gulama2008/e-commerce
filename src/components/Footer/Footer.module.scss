@@ -1,0 +1,11 @@
+@use '../../partials/colors';
+.footer{
+    text-align: center;
+    margin-top: 30px;
+    background-color: colors.$main-color;
+    height: 30px;
+    color: white;
+    line-height: 30px;
+    font-size: 14px;
+    
+}
