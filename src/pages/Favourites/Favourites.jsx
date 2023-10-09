@@ -6,7 +6,6 @@ import { subscribeToProducts } from "../../services/products-service";
 const Favourites = () => {
   const [products, setProducts] = useState([]);
   const [hasFavouritedItems, setHasFavouritedItems] = useState(false);
-console.log('render');
   useEffect(() => {
     if (products.filter((product) => product.isFavourited).length!==0) {
       setHasFavouritedItems(true);

@@ -4,7 +4,6 @@ import { getProductById } from '../../services/products-service';
 import ProductPage from '../../pages/ProductPage/ProductPage';
 
 const ProductPageLoader = () => {
-    // console.log(useParams());
     const { id,category } = useParams();
     const [product, setProduct] = useState(null);
     const[isLoading, setIsLoading] = useState(false);

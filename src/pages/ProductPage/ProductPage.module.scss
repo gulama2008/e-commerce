@@ -29,7 +29,6 @@
   @include mixins.sm-md-screen {
     flex-direction: column;
   }
-  //   height: 60%;
 }
 
 .info {
@@ -45,8 +44,7 @@
   &_price {
     font-size: 18px;
   }
-  &_stock {
-  }
+  
   @include mixins.md-lg-screen {
     width: 90%;
   }
@@ -57,7 +55,6 @@
 }
 
 .img {
-  //   width: 25%;
   height: 80%;
   @include mixins.md-lg-screen {
     width: 60%;
@@ -68,7 +65,6 @@
   }
 }
 .btn {
-  // background-color: blue;
   margin-right: 10px;
   height: 40px;
   width: 100px;
@@ -117,14 +113,12 @@
   border: none;
   color: white;
   background-color: #a386be;
-  // border-bottom: 2px solid rgba(0, 0, 0, 0.35);
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   &:hover {
     background-color: #9c72c4;
   }
   &:active {
-    // border-bottom: none;
     box-shadow: none;
   }
 }

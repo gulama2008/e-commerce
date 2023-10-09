@@ -28,10 +28,6 @@ const ProductInCart = ({ item, isLastItem, index }) => {
     deleteItemInCart(copy);
   };
 
-    // const changeQuantity = (e) => { 
-    //     setQuantityInCart(e.target.value);
-    //     changeItemQuantityInCart(index,parseInt(e.target.value))
-    // }
   return (
     <div className={containerClasses}>
       <div className={ styles.main}>
@@ -43,7 +39,6 @@ const ProductInCart = ({ item, isLastItem, index }) => {
             Unit price: ${toFloat(item.price)}
           </p>
           <p className={styles.info_small}>Stock: {item.stock} left</p>
-          {/* <p>Subtotal: ${toFloat(item.price * item.quantity)}</p> */}
         </div>
       </div>
 

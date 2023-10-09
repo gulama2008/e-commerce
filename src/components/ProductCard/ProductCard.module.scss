@@ -6,8 +6,6 @@
     @include mixins.md-lg-screen {
         width: 40%;
         padding: 0px;
-        // margin-bottom: 40px;
-        // margin-top: 40px;
   }
 }
 .card{
@@ -15,13 +13,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    // padding: 20px;
     height: 400px;
     width: 300px;
     text-decoration: none;
     color: black;
     gap: 10px;
-    // position: relative;
     &_name{
         font-size: 12px;
     }

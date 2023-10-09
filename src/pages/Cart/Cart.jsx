@@ -7,10 +7,6 @@ import { getItemsInCart } from "../../services/data-service";
 const Cart = () => {
   const {
     itemsInCart,
-    deleteItemInCart,
-    updateCart,
-    changeItemQuantityInCart,
-    products,
     itemsInSessionStorage,
   } = useContext(ProductsContext);
   useEffect(() => {}, [itemsInCart]);

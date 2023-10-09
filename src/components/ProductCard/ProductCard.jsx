@@ -19,8 +19,6 @@ const ProductCard = ({ product }) => {
         <img className={styles.img} src={product.image} alt="" />
         <p className={styles.card_name}>{product.name}</p>
         <p className={styles.card_price}>${toFloat(product.price)}</p>
-
-        {/* {isFavourite ? <img src='src/assets/fav3.png' className={styles.fav} /> : <img src='src/assets/fav2.png' className={ styles.fav} />} */}
       </Link>
       <img
         src={isFavourite ? fav3 : fav2}

@@ -3,7 +3,6 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import styles from './ProductsPage.module.scss'
 import { NavLink } from 'react-router-dom';
 const ProductsPage = ({ products,category}) => {
-  console.log(products);
   return (
     <div className={styles.container}>
       <div className={styles.heading}>

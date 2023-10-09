@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import styles from "./ProductPage.module.scss";
 import { ProductsContext } from "../../context/ProductsContextProvider";
-import {
-  saveItemsToSessionStorage,
-  toFloat,
-} from "../../services/data-service";
+import { toFloat } from "../../services/data-service";
 import { NavLink } from "react-router-dom";
-import QuantityButton from "../../components/QuantityButton/QuantityButton";
-import { changeFavouriteStatusById, updateStock } from "../../services/products-service";
-import fav2 from '../../assets/fav2.png';
-import fav3 from '../../assets/fav3.png'
+import {
+  changeFavouriteStatusById,
+  updateStock,
+} from "../../services/products-service";
+import fav2 from "../../assets/fav2.png";
+import fav3 from "../../assets/fav3.png";
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -18,18 +17,13 @@ const ProductPage = ({ product, category }) => {
   const [quantity, setQuantity] = useState(product.quantity[0]);
   const [quantityAdd, setQuantityAdd] = useState(1);
   const [quantityInStock, setQuantityInStock] = useState(product.quantity);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
   const [isFavourite, setIsFavourite] = useState(product.isFavourited);
-  console.log(isFavourite);
-  let btnClasses = styles.btn;
-  let activeBtnClasses = (btnClasses += ` ${styles.btn_active}`);
 
   const onClickSizeButton = (e) => {
     setQuantityAdd(1);
     setIsSizeChosen(true);
     const index = e.target.getAttribute("index");
-    // console.log(index);
     setActiveSizeIndex(index);
     setQuantity(product.quantity[index]);
   };
@@ -37,7 +31,7 @@ const ProductPage = ({ product, category }) => {
     setQuantityAdd(parseInt(e.target.value));
   };
   const increaseQuantity = (e) => {
-    if (!activeSizeIndex) { 
+    if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
     }
@@ -51,7 +45,6 @@ const ProductPage = ({ product, category }) => {
     setQuantityAdd(quantityAdd - 1);
   };
   const addToCart = () => {
-    // setIsAddedToCart(true);
     if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
@@ -64,8 +57,6 @@ const ProductPage = ({ product, category }) => {
       quantity: quantityAdd,
       stock: quantity,
     };
-    console.log(newItem);
-    // saveItemsToSessionStorage(newItem);
     const newQuantityArray = [...quantityInStock];
     newQuantityArray[activeSizeIndex] =
       newQuantityArray[activeSizeIndex] - parseInt(quantityAdd);
@@ -162,5 +153,3 @@ const ProductPage = ({ product, category }) => {
 };
 
 export default ProductPage;
-
-// className={ activeSizeIndex==index?`{styles.btn}`:`{styles.btn} {styles.btn_active}`}>

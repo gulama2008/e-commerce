@@ -6,7 +6,6 @@ import { ProductsContext } from '../../context/ProductsContextProvider';
 const CartPageLoader = () => {
     const { itemsInCart } = useContext(ProductsContext);
     console.log(itemsInCart);
-    // useEffect(() => {}, []);
   return (
       <div>
           <ProductInCart />

@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
 import { createContext } from "react";
 import {
-  addProductInCart,
   getAllProducts,
   subscribeToProducts,
 } from "../services/products-service";
@@ -57,7 +56,6 @@ const ProductsContextProvider = ({ children}) => {
   }, [itemsInCart])
 
   useEffect(() => {
-    // refreshProducts();
     const unsub = subscribeToProducts(setProducts);
     return () => unsub();
   }, []);

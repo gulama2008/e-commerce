@@ -11,20 +11,6 @@ const CarouselBox = () => {
     "src/assets/banner3.jpeg",
   ];
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  // useEffect(() => {
-  //   console.log("test useeffect");
-  //   let i = 0;
-  //   let changeCarouselImage = () => {
-  //     setInterval(() => {
-  //       console.log("before change", i);
-  //       setCurrentImgIndex(i % 4);
-  //       i++;
-  //       console.log("after change", i);
-  //     }, 5000)
-  //   };
-  //   changeCarouselImage();
-  //   return clearInterval(changeCarouselImage);
-  // }, [currentImgIndex]);
   const previousImg = () => {
     setCurrentImgIndex((currentImgIndex + 3) % 4);
   };
@@ -33,15 +19,6 @@ const CarouselBox = () => {
   };
 
   return (
-    // <div className={styles.container}>
-    //   <img src="src/assets/arrow-left-icon.png" alt="" onClick={previousImg} />
-    //   <img
-    //     src={carouselImages[currentImgIndex]}
-    //     alt=""
-    //     className={styles.img}
-    //   />
-    //   <img src="src/assets/arrow-right-icon.png" alt="" onClick={nextImg} />
-    // </div>
     <Carousel autoplay>
       <div className={styles.container}>
         <img src={carouselImages[0]} alt="" className={styles.img} />

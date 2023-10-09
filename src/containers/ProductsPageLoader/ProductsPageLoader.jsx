@@ -8,7 +8,6 @@ const ProductsPageLoader = () => {
   const [products, setProducts] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(category);
   useEffect(() => {
     setIsLoading(true);
     getProductsByCategory(category)
