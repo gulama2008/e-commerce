@@ -6,6 +6,14 @@
   align-items: center;
   gap: 50px;
   padding-bottom: 50px;
+  @include mixins.md-lg-screen {
+    flex-direction: column;
+  }
+
+  @include mixins.sm-md-screen {
+    flex-direction: column;
+  }
+  
 }
 
 .container {
@@ -39,11 +47,25 @@
   }
   &_stock {
   }
+  @include mixins.md-lg-screen {
+    width: 90%;
+  }
+
+  @include mixins.sm-md-screen {
+    width: 90%;
+  }
 }
 
 .img {
   //   width: 25%;
   height: 80%;
+  @include mixins.md-lg-screen {
+    width: 60%;
+  }
+
+  @include mixins.sm-md-screen {
+    width: 80%;
+  }
 }
 .btn {
   // background-color: blue;
