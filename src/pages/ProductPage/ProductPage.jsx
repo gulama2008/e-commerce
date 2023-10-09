@@ -8,6 +8,8 @@ import {
 import { NavLink } from "react-router-dom";
 import QuantityButton from "../../components/QuantityButton/QuantityButton";
 import { changeFavouriteStatusById, updateStock } from "../../services/products-service";
+import fav2 from '../../assets/fav2.png';
+import fav3 from '../../assets/fav3.png'
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -19,6 +21,7 @@ const ProductPage = ({ product, category }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [quantityInCart, setQuantityInCart] = useState(0);
   const [isFavourite, setIsFavourite] = useState(product.isFavourited);
+  console.log(isFavourite);
   let btnClasses = styles.btn;
   let activeBtnClasses = (btnClasses += ` ${styles.btn_active}`);
 
@@ -83,7 +86,7 @@ const ProductPage = ({ product, category }) => {
         <div className={styles.info}>
           <p className={styles.info_name}>{product.name}</p>
           <img
-            src={isFavourite ? "src/assets/fav3.png" : "src/assets/fav2.png"}
+            src={isFavourite ? fav3 : fav2}
             alt=""
             className={styles.fav}
             onClick={changeFavourite}
@@ -91,9 +94,6 @@ const ProductPage = ({ product, category }) => {
           <p className={styles.info_price}>${toFloat(product.price)}</p>
           <div>
             {product.size.map((size, index) => {
-              console.log(index);
-              console.log(activeSizeIndex);
-              console.log(index == activeSizeIndex);
               return (
                 <button
                   key={index}

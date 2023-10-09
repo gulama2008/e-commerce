@@ -3,6 +3,8 @@ import styles from './ProductCard.module.scss'
 import { Link, NavLink } from 'react-router-dom';
 import { toFloat } from '../../services/data-service';
 import { changeFavouriteStatusById } from '../../services/products-service';
+import fav2 from '../../assets/fav2.png';
+import fav3 from "../../assets/fav3.png";
 const ProductCard = ({ product }) => {
   const [isFavourite, setIsFavourite] = useState(product.isFavourited);
   console.log(product);
@@ -21,7 +23,7 @@ const ProductCard = ({ product }) => {
         {/* {isFavourite ? <img src='src/assets/fav3.png' className={styles.fav} /> : <img src='src/assets/fav2.png' className={ styles.fav} />} */}
       </Link>
       <img
-        src={isFavourite ? "src/assets/fav3.png" : "src/assets/fav2.png"}
+        src={isFavourite ? fav3 : fav2}
         alt=""
         className={styles.fav}
         onClick={changeFavourite}

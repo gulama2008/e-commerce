@@ -4,6 +4,10 @@ import styles from "./NavBar.module.scss";
 import Hamburger from "../Hamburger/Hamburger";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import { ProductsContext } from "../../context/ProductsContextProvider";
+import fav1 from "../../assets/fav1.png";
+import user from '../../assets/user.png';
+import cart from "../../assets/cart.png";
+import logo from '../../assets/logo-img.png'
 const NavBar = () => {
   const { quantityInCart, setQuantityInCart } = useContext(ProductsContext);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -20,7 +24,7 @@ const NavBar = () => {
         <NavLink to="/" className={styles.logo}>
           Baby Planet
           <img
-            src="src/assets/logo-img.png"
+            src={logo}
             alt=""
             className={styles.logo_img}
           />
@@ -42,20 +46,20 @@ const NavBar = () => {
         </div>
         <div className={styles.icon}>
           <NavLink to="favourites">
-            <img src="src/assets/fav1.png" alt="" className={styles.icon_fav} />
+            <img src={fav1} alt="" className={styles.icon_fav} />
           </NavLink>
           <NavLink
 
           // className={styles.navlinks_link}
           >
-            <img src="src/assets/user.png" alt="" className={styles.icon_fav} />
+            <img src={ user} alt="" className={styles.icon_fav} />
           </NavLink>
           <NavLink
             to="cart"
             className={styles.cart}
           >
             <img
-              src="src/assets/cart.png"
+              src={cart}
               alt=""
               className={styles.icon_cart}
             />

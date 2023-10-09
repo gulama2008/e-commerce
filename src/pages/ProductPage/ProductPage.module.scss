@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  padding-bottom: 50px;
 }
 
 .container {
@@ -124,4 +125,9 @@
 .outOfStock {
   color: red;
   margin-left: 10px;
+}
+
+.fav{
+  height: 30px;
+  width: 30px;
 }
