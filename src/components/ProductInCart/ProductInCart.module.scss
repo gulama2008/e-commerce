@@ -1,0 +1,61 @@
+@use "../../partials/colors";
+@use '../../partials/mixins';
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  height: 200px;
+  position: relative;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  @include mixins.sm-md-screen {
+     flex-direction: column;
+     flex-wrap: nowrap;
+     margin-top: 30px;
+  }
+   
+}
+.main{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.img {
+  max-width: 100px;
+  max-height: 100%;
+}
+.withBottomBorder {
+  border-bottom: 1px solid colors.$partition-color;
+}
+.quantity {
+  width: 50px;
+}
+.delete {
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @include mixins.sm-md-screen {
+        top:-30px;
+        right: -10px;
+    }
+}
+.edit {
+width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 50px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  &_small {
+    font-size: 14px;
+    color: colors.$font-secondary;
+  }
+}

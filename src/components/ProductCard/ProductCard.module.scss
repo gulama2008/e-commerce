@@ -1,0 +1,43 @@
+@use '../../partials/colors';
+@use '../../partials/mixins';
+.container{
+    display: flex;
+    flex-direction: column;
+    @include mixins.md-lg-screen {
+        width: 40%;
+        padding: 0px;
+  }
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 400px;
+    width: 300px;
+    text-decoration: none;
+    color: black;
+    gap: 10px;
+    &_name{
+        font-size: 12px;
+    }
+    &_price{
+        font-weight: 500;
+    }
+     
+
+  @include mixins.sm-md-screen {
+    
+  }
+}
+
+.img{
+    max-width: 90%;
+    max-height: 80%;
+    
+}
+.fav{
+    width: 20px;
+    cursor: pointer;
+    
+}

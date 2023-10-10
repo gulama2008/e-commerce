@@ -1,0 +1,103 @@
+@use '../../partials/colors';
+@use "../../partials/mixins";
+.container{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: colors.$main-color;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.logo{
+    font-family: 'Schoolbell', cursive;;
+    color: white;
+    font-size: 30px;
+    margin-left: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    &_img{
+        width: 30px;
+        margin-left: 10px;
+    }
+    @include mixins.md-lg-screen {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+    @include mixins.sm-md-screen{
+        font-size: 25px;
+        margin-left: 10px;
+    }
+}
+
+.navlinks{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &_link{
+        
+        text-decoration: none;
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+    }
+    @include mixins.md-lg-screen {
+        display: none;
+    }
+    @include mixins.sm-md-screen{
+        display: none;
+    }
+}
+.icon{
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &_cart{
+        width: 30px;
+        height: 35px;
+    }
+    &_fav{
+        width: 25px;
+    }
+    @include mixins.md-lg-screen {
+        margin-right: 20px;
+    }
+    @include mixins.sm-md-screen{
+        margin-right: 20px;
+    }
+}
+
+.cart{
+    position: relative;     
+    }
+
+.hamburger{
+    display: none;
+    @include mixins.md-lg-screen {
+        display: block;
+        margin-left: 50px;
+        }
+    @include mixins.sm-md-screen{
+        display: block;
+        margin-left: 20px;
+    }
+}
+
+.quantity{
+    position:absolute;
+    top: 0;
+    right: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+    z-index: 10;
+    color: colors.$main-color;
+    font-size: 12px;
+    line-height: 15px;
+}
