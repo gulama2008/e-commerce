@@ -9,6 +9,10 @@ import {
 } from "../../services/products-service";
 import fav2 from "../../assets/fav2.png";
 import fav3 from "../../assets/fav3.png";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ProductPage = ({ product, category }) => {
   const { itemsInCart, updateCart, changeItemQuantityInCart } =
     useContext(ProductsContext);
@@ -19,7 +23,7 @@ const ProductPage = ({ product, category }) => {
   const [quantityInStock, setQuantityInStock] = useState(product.quantity);
   const [quantityInCart, setQuantityInCart] = useState(0);
   const [isFavourite, setIsFavourite] = useState(product.isFavourited);
-
+  
   const onClickSizeButton = (e) => {
     setQuantityAdd(1);
     setIsSizeChosen(true);
@@ -44,11 +48,23 @@ const ProductPage = ({ product, category }) => {
     }
     setQuantityAdd(quantityAdd - 1);
   };
+
+  const notify = () => toast("Item has been added to the cart!");
   const addToCart = () => {
     if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
     }
+    toast.success("Item has been added to the cart!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     setQuantity(quantity - parseInt(quantityAdd));
     setQuantityInCart(quantityInCart + parseInt(quantityAdd));
     const newItem = {
@@ -145,6 +161,18 @@ const ProductPage = ({ product, category }) => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <NavLink to={`/${category}`}>
         <button className={styles.back}>back</button>
       </NavLink>
