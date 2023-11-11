@@ -2,6 +2,7 @@ import React from "react";
 import CarouselBox from "../../components/Carousel/CarouselBox";
 import styles from "./HomePage.module.scss";
 import { NavLink } from "react-router-dom";
+import romper from "../../assets/romper.avif";
 const HomePage = () => {
   return (
     <>
@@ -9,7 +10,7 @@ const HomePage = () => {
       <div className={styles.container}>
         <NavLink to="/romper">
           <div className={styles.card}>
-            <img src="src/assets/romper.avif" alt="" className={styles.img} />
+            <img src={ romper} alt="" className={styles.img} />
             <div className={styles.title}>ROMPER</div>
           </div>
         </NavLink>
