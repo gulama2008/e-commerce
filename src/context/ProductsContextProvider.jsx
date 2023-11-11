@@ -1,59 +1,63 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createContext } from "react";
 import {
   getAllProducts,
   subscribeToProducts,
 } from "../services/products-service";
-import { getItemsInCart, getQuantity, getQuantityInCart, saveItemsToSessionStorage } from "../services/data-service";
+import {
+  getItemsInCart,
+  getQuantity,
+  getQuantityInCart,
+  saveItemsToSessionStorage,
+} from "../services/data-service";
+/* eslint-disable react/prop-types */
 export const ProductsContext = createContext(null);
-
-const ProductsContextProvider = ({ children}) => {
+const ProductsContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [itemsInCart, setItemsInCart] = useState(getItemsInCart());
-  const [itemsInSessionStorage, setItemsInSessionStorage] = useState(getItemsInCart());
+  const [itemsInSessionStorage, setItemsInSessionStorage] = useState(
+    getItemsInCart()
+  );
   const [quantityInCart, setQuantityInCart] = useState(getQuantityInCart());
-  const refreshProducts = () => { 
+  const refreshProducts = () => {
     getAllProducts()
-      .then(products => setProducts(products))
-      .catch(e => console.log(e));
-  }
+      .then((products) => setProducts(products))
+      .catch((e) => console.log(e));
+  };
 
   const updateCart = (newItem) => {
-    if (itemsInCart.length === 0) { 
+    if (itemsInCart.length === 0) {
       saveItemsToSessionStorage([newItem]);
       return setItemsInCart([newItem]);
     }
-    const copy = itemsInCart.map(item => ({ ...item }));
-    const sameItemIndex = copy.findIndex((item) => { 
+    const copy = itemsInCart.map((item) => ({ ...item }));
+    const sameItemIndex = copy.findIndex((item) => {
       return item.id == newItem.id && item.size == newItem.size;
-    })
-    sameItemIndex == -1 ? copy.push(newItem) : copy[sameItemIndex].quantity += newItem.quantity;
+    });
+    sameItemIndex == -1
+      ? copy.push(newItem)
+      : (copy[sameItemIndex].quantity += newItem.quantity);
     saveItemsToSessionStorage(copy);
     setItemsInCart(copy);
-  }
+  };
 
-  const deleteItemInCart = (newItemsArray) => { 
+  const deleteItemInCart = (newItemsArray) => {
     saveItemsToSessionStorage(newItemsArray);
     setItemsInCart(newItemsArray);
-  }
+  };
 
-  const changeItemQuantityInCart = (index,newQuantity) => { 
+  const changeItemQuantityInCart = (index, newQuantity) => {
     const copy = [...itemsInCart];
     copy[index].quantity = newQuantity;
-    saveItemsToSessionStorage(copy)
+    saveItemsToSessionStorage(copy);
     setItemsInCart(copy);
-  }
-
-  const quantityShownOnCart = () => { 
-    setQuantityInCart(getQuantityInCart());
-  }
+  };
 
   useEffect(() => {
-    
     const newItemsListInSessionStorage = getItemsInCart();
     setItemsInSessionStorage(newItemsListInSessionStorage);
-    setQuantityInCart(getQuantity(newItemsListInSessionStorage, 'quantity'));
-  }, [itemsInCart])
+    setQuantityInCart(getQuantity(newItemsListInSessionStorage, "quantity"));
+  }, [itemsInCart]);
 
   useEffect(() => {
     const unsub = subscribeToProducts(setProducts);
@@ -79,6 +83,6 @@ const ProductsContextProvider = ({ children}) => {
       {children}
     </ProductsContext.Provider>
   );
-}
+};
 
-export default ProductsContextProvider
+export default ProductsContextProvider;

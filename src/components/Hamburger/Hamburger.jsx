@@ -1,5 +1,4 @@
-import React from 'react'
-import styles from './Hamburger.module.scss'
+import styles from "./Hamburger.module.scss";
 const Hamburger = () => {
   return (
     <div className={styles.hamburger}>
@@ -8,6 +7,6 @@ const Hamburger = () => {
       <div className={styles.burger} />
     </div>
   );
-}
+};
 
-export default Hamburger
+export default Hamburger;

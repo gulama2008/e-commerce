@@ -1,21 +1,16 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import ProductInCart from "../../components/ProductInCart/ProductInCart";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./Cart.module.scss";
-import empty from '../../assets/empty.png'
+import empty from "../../assets/empty.png";
 const Cart = () => {
-  const {
-    itemsInCart,
-    itemsInSessionStorage,
-  } = useContext(ProductsContext);
+  const { itemsInCart, itemsInSessionStorage } = useContext(ProductsContext);
   useEffect(() => {}, [itemsInCart]);
   let lastItemIndex = itemsInCart.length - 1;
-console.log(itemsInSessionStorage);
-  console.log(itemsInCart);
   return (
-    <div className={styles.page }>
-      <p className={ styles.title}>Shopping Cart</p>
+    <div className={styles.page}>
+      <p className={styles.title}>Shopping Cart</p>
       {itemsInSessionStorage.length > 0 ? (
         <div className={styles.container}>
           <div className={styles.container_products}>
@@ -33,9 +28,9 @@ console.log(itemsInSessionStorage);
           <OrderDetail />
         </div>
       ) : (
-          <div className={styles.empty}>
-            <img src={empty} alt="" />
-          </div>
+        <div className={styles.empty}>
+          <img src={empty} alt="" />
+        </div>
       )}
     </div>
   );

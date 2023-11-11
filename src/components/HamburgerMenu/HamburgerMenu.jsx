@@ -1,9 +1,8 @@
-import React from 'react'
-import styles from './HamburgerMenu.module.scss'
-import { NavLink } from 'react-router-dom';
+import styles from "./HamburgerMenu.module.scss";
+import { NavLink } from "react-router-dom";
 const HamburgerMenu = () => {
   return (
-      <div className={ styles.container}>
+    <div className={styles.container}>
       <NavLink to="/" className={styles.link}>
         HOME
       </NavLink>
@@ -18,6 +17,6 @@ const HamburgerMenu = () => {
       </NavLink>
     </div>
   );
-}
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

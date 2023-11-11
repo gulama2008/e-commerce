@@ -1,16 +1,13 @@
 import {
   addDoc,
   collection,
-  deleteDoc,
   doc,
   getDoc,
   getDocs,
-  increment,
   onSnapshot,
-    updateDoc,
-    where,
-    query
-  
+  updateDoc,
+  where,
+  query,
 } from "firebase/firestore";
 import { db } from "../config/firestore";
 
@@ -18,22 +15,25 @@ export const getAllProducts = async () => {
   // create collection reference
   const collectionRef = collection(db, "products");
   // get all documents based on that reference
-    const querySnapshot = await getDocs(collectionRef);
+  const querySnapshot = await getDocs(collectionRef);
   // tidy data
-    console.log(querySnapshot);
-    const cleanedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log(cleanedData);
-    return cleanedData;
+  const cleanedData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return cleanedData;
 };
 
 export const getProductsByCategory = async (category) => {
-    const q = query(collection(db, "products"), where("type", "==", category));
-    const querySnapshot = await getDocs(q);
-    console.log(querySnapshot.docs);
-    const cleanedData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log(cleanedData);
-    return cleanedData;
-}
+  const q = query(collection(db, "products"), where("type", "==", category));
+  const querySnapshot = await getDocs(q);
+  const cleanedData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return cleanedData;
+};
 
 export const getProductById = async (id) => {
   // get document reference
@@ -49,7 +49,7 @@ export const getProductById = async (id) => {
   return { id: querySnapshot.id, ...querySnapshot.data() };
 };
 
-export const changeFavouriteStatusById = async (id,newValue) => {
+export const changeFavouriteStatusById = async (id, newValue) => {
   try {
     const docRef = doc(db, "products", id);
     await updateDoc(docRef, {
@@ -63,14 +63,15 @@ export const changeFavouriteStatusById = async (id,newValue) => {
 };
 
 export const getProductsByIsFavourited = async () => {
-  const q = query(collection(db, "products"), where("isFavourited", "==", true));
+  const q = query(
+    collection(db, "products"),
+    where("isFavourited", "==", true)
+  );
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot.docs);
   const cleanedData = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-  console.log(cleanedData);
   return cleanedData;
 };
 
@@ -102,13 +103,10 @@ export const updateStock = async (id, quantity) => {
 
 export const addProductInCart = async (data) => {
   try {
-    // const newProduct = { ...data };
     const collectionRef = collection(db, "cart", data);
     const newProductRef = await addDoc(collectionRef, data);
-    // return the created Movie
     return { id: newProductRef, ...data };
   } catch (e) {
-    // if i need to I can log etc here
     console.log(e);
     throw e;
   }

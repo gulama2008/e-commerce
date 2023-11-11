@@ -1,23 +1,19 @@
-import React, { useContext, useState } from 'react'
-import { ProductsContext } from '../../context/ProductsContextProvider'
-import styles from './OrderDetail.module.scss'
+import { useContext, useState } from "react";
+import { ProductsContext } from "../../context/ProductsContextProvider";
+import styles from "./OrderDetail.module.scss";
 import {
   toFloat,
   saveItemsToSessionStorage,
 } from "../../services/data-service";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 const OrderDetail = () => {
-  const {
-    itemsInCart,
-    setItemsInCart,
-    itemsInSessionStorage,
-    setItemsInSessionStorage,
-  } = useContext(ProductsContext);
+  const { setItemsInCart, itemsInSessionStorage, setItemsInSessionStorage } =
+    useContext(ProductsContext);
   const [deliveryCost, setDeliveryCost] = useState(5);
 
-  const changeDelivery = (e) => { 
+  const changeDelivery = (e) => {
     setDeliveryCost(parseInt(toFloat(e.target.value)));
-  }
+  };
 
   const total = parseInt(
     itemsInSessionStorage.reduce((a, b) => {
@@ -28,11 +24,11 @@ const OrderDetail = () => {
   const deliveryCostFloat = toFloat(deliveryCost);
   const payable = toFloat(total + deliveryCost);
 
-  const proceedPurchase = () => { 
+  const proceedPurchase = () => {
     setItemsInCart([]);
     saveItemsToSessionStorage([]);
     setItemsInSessionStorage([]);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -94,6 +90,6 @@ const OrderDetail = () => {
       </div>
     </div>
   );
-}
+};
 
-export default OrderDetail
+export default OrderDetail;

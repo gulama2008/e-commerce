@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ProductPage.module.scss";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import { toFloat } from "../../services/data-service";
@@ -9,13 +9,12 @@ import {
 } from "../../services/products-service";
 import fav2 from "../../assets/fav2.png";
 import fav3 from "../../assets/fav3.png";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+/* eslint-disable react/prop-types */
 
 const ProductPage = ({ product, category }) => {
-  const { itemsInCart, updateCart, changeItemQuantityInCart } =
-    useContext(ProductsContext);
+  const { itemsInCart, updateCart } = useContext(ProductsContext);
   const [activeSizeIndex, setActiveSizeIndex] = useState(null);
   const [isSizeChosen, setIsSizeChosen] = useState(true);
   const [quantity, setQuantity] = useState(product.quantity[0]);
@@ -23,7 +22,7 @@ const ProductPage = ({ product, category }) => {
   const [quantityInStock, setQuantityInStock] = useState(product.quantity);
   const [quantityInCart, setQuantityInCart] = useState(0);
   const [isFavourite, setIsFavourite] = useState(product.isFavourited);
-  
+
   const onClickSizeButton = (e) => {
     setQuantityAdd(1);
     setIsSizeChosen(true);
@@ -34,14 +33,14 @@ const ProductPage = ({ product, category }) => {
   const changeQuantityPurchase = (e) => {
     setQuantityAdd(parseInt(e.target.value));
   };
-  const increaseQuantity = (e) => {
+  const increaseQuantity = () => {
     if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
     }
     setQuantityAdd(quantityAdd + 1);
   };
-  const decreaseQuantity = (e) => {
+  const decreaseQuantity = () => {
     if (!activeSizeIndex) {
       setIsSizeChosen(false);
       return;
@@ -49,7 +48,7 @@ const ProductPage = ({ product, category }) => {
     setQuantityAdd(quantityAdd - 1);
   };
 
-  const notify = () => toast("Item has been added to the cart!");
+  // const notify = () => toast("Item has been added to the cart!");
   const addToCart = () => {
     if (!activeSizeIndex) {
       setIsSizeChosen(false);
@@ -85,7 +84,6 @@ const ProductPage = ({ product, category }) => {
     setIsFavourite(!isFavourite);
     changeFavouriteStatusById(product.id, !isFavourite);
   };
-  console.log(itemsInCart);
   return (
     <div className={styles.page}>
       <div className={styles.container}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Carousel } from "antd";
 import styles from "./CarouselBox.module.scss";
 import banner0 from "../../assets/banner0.webp";
@@ -6,11 +6,8 @@ import banner1 from "../../assets/banner1.webp";
 import banner2 from "../../assets/banner2.webp";
 import banner3 from "../../assets/banner3.jpeg";
 
-
 const CarouselBox = () => {
-  const carouselImages = [
-    banner0,banner1,banner2,banner3
-  ];
+  const carouselImages = [banner0, banner1, banner2, banner3];
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const previousImg = () => {
     setCurrentImgIndex((currentImgIndex + 3) % 4);
@@ -18,6 +15,7 @@ const CarouselBox = () => {
   const nextImg = () => {
     setCurrentImgIndex((currentImgIndex + 1) % 4);
   };
+  console.log(previousImg, nextImg);
 
   return (
     <Carousel autoplay>

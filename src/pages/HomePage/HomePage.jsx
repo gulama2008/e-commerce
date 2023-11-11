@@ -1,10 +1,10 @@
-import React from "react";
 import CarouselBox from "../../components/Carousel/CarouselBox";
 import styles from "./HomePage.module.scss";
 import { NavLink } from "react-router-dom";
 import romper from "../../assets/romper.avif";
 import sleepwear from "../../assets/sleepwear.avif";
 import shoes from "../../assets/shoes.avif";
+
 const HomePage = () => {
   return (
     <>
@@ -12,17 +12,13 @@ const HomePage = () => {
       <div className={styles.container}>
         <NavLink to="/romper">
           <div className={styles.card}>
-            <img src={ romper} alt="" className={styles.img} />
+            <img src={romper} alt="" className={styles.img} />
             <div className={styles.title}>ROMPER</div>
           </div>
         </NavLink>
         <NavLink to="/sleepwear">
           <div className={styles.card}>
-            <img
-              src={ sleepwear}
-              alt=""
-              className={styles.img}
-            />
+            <img src={sleepwear} alt="" className={styles.img} />
             <div className={styles.title}>SLEEPWEAR</div>
           </div>
         </NavLink>

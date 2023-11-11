@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 import Hamburger from "../Hamburger/Hamburger";
@@ -8,9 +8,8 @@ import fav1 from "../../assets/fav1.png";
 import cart from "../../assets/cart.png";
 import logo from "../../assets/logo-img.png";
 const NavBar = () => {
-  const { quantityInCart, setQuantityInCart } = useContext(ProductsContext);
+  const { quantityInCart } = useContext(ProductsContext);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const [totalQuantity, setTotalQuantity] = useState();
   const toggleHamburger = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
@@ -42,9 +41,6 @@ const NavBar = () => {
           <NavLink to="favourites">
             <img src={fav1} alt="" className={styles.icon_fav} />
           </NavLink>
-          {/* <NavLink>
-            <img src={user} alt="" className={styles.icon_fav} />
-          </NavLink> */}
           <NavLink to="cart" className={styles.cart}>
             <img src={cart} alt="" className={styles.icon_cart} />
             {quantityInCart !== 0 && (

@@ -1,8 +1,9 @@
-import React from 'react'
-import ProductCard from '../../components/ProductCard/ProductCard';
-import styles from './ProductsPage.module.scss'
-import { NavLink } from 'react-router-dom';
-const ProductsPage = ({ products,category}) => {
+import ProductCard from "../../components/ProductCard/ProductCard";
+import styles from "./ProductsPage.module.scss";
+import { NavLink } from "react-router-dom";
+/* eslint-disable react/prop-types */
+
+const ProductsPage = ({ products, category }) => {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
@@ -20,11 +21,11 @@ const ProductsPage = ({ products,category}) => {
           return <ProductCard product={product} key={product.id} />;
         })}
       </div>
-      <NavLink to='/'>
+      <NavLink to="/">
         <button className={styles.btn}>Back</button>
       </NavLink>
     </div>
   );
-}
+};
 
-export default ProductsPage
+export default ProductsPage;

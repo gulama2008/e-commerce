@@ -2,7 +2,23 @@
 
 This is a mock e-commerce baby cloths website that uses react and firestore. It has home page, products pages, individual product details page, cart and checkout page, and favourite items page. The products are stored as firestore documents and user interactions requiring persistence like a favourites product list or adding products to their cart using session storage.
 
-## Demo & Snippets
+### 🚀 [Launch Live Project](https://baby-planet.netlify.app/)
+
+## Table of Contents
+
+- [Snippets](#snippets)
+- [Requirements](#requirements)
+- [Purpose](#purpose-of-project)
+- [Tech Stack](#tech-stack)
+- [Requirements](#requirements)
+    - [MVP](#mvp)
+    - [Bonus](#bonus)
+- [Features](#features)
+- [Known Issues](#known-issues)
+- [Future Goals](#future-goals)
+
+## Snippets
+
 Home page  
 ![home page](./src/assets/1.png)
 Products page  
@@ -11,13 +27,26 @@ Product details page
 ![product page](./src/assets/6.png)
 Cart/Checkout page  
 ![cart page](./src/assets/3.png)
-![cart page](./src/assets/4.png)
 Favourite items page  
 ![favourites page](./src/assets/5.png)
 
----
+## Purpose Of Project
+This project is designed to reinforce my React learnings and make sure that I'm comfortable with most aspect of the framework.
+With this project I will practice how to:
+- Fetch Data within a React App
+- Use react-router-dom
+- Use Firebase/Firestore
 
-## Requirements / Purpose
+## Tech Stack
+
+- React
+- HTML
+- CSS/SCSS
+- JavaScript
+- React Router DOM
+- Google Firestore NoSQL Database
+
+## Requirements
 
 ### MVP
 3 pages:
@@ -49,12 +78,6 @@ Using Firestore and react create a cart system. Add logic to prevent users from 
 - Display the total cost of your cart
 - Purchase should remove items from stock and clear the cart (no need to track any kind of payment)
 
-### Purpose of project
-This project is designed to reinforce my React learnings and make sure that I'm comfortable with most aspect of the framework.
-With this project I will practice how to:
-- Fetch Data within a React App
-- Use react-router-dom
-- Use Firebase/Firestore
 
 
 ## Features
@@ -72,7 +95,7 @@ With this project I will practice how to:
 
 
 
-## Known issues  
+## Known Issues  
  This application currently doesn't have any functionality of login or register for an user account, so basically it is just a project for practising React and Firestore, the cart system actually doesn't have any meaning since the items added in the cart are saved in the session storage.  
 
 ## Future Goals

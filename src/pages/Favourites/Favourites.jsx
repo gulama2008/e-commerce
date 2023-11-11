@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import styles from "./Favourites.module.scss";
 import { NavLink } from "react-router-dom";
@@ -7,7 +7,7 @@ const Favourites = () => {
   const [products, setProducts] = useState([]);
   const [hasFavouritedItems, setHasFavouritedItems] = useState(false);
   useEffect(() => {
-    if (products.filter((product) => product.isFavourited).length!==0) {
+    if (products.filter((product) => product.isFavourited).length !== 0) {
       setHasFavouritedItems(true);
     } else {
       setHasFavouritedItems(false);
