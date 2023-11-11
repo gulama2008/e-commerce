@@ -5,7 +5,6 @@ import Hamburger from "../Hamburger/Hamburger";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import fav1 from "../../assets/fav1.png";
-import user from "../../assets/user.png";
 import cart from "../../assets/cart.png";
 import logo from "../../assets/logo-img.png";
 const NavBar = () => {

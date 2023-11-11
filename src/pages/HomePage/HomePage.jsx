@@ -3,6 +3,8 @@ import CarouselBox from "../../components/Carousel/CarouselBox";
 import styles from "./HomePage.module.scss";
 import { NavLink } from "react-router-dom";
 import romper from "../../assets/romper.avif";
+import sleepwear from "../../assets/sleepwear.avif";
+import shoes from "../../assets/shoes.avif";
 const HomePage = () => {
   return (
     <>
@@ -17,7 +19,7 @@ const HomePage = () => {
         <NavLink to="/sleepwear">
           <div className={styles.card}>
             <img
-              src="src/assets/sleepwear.avif"
+              src={ sleepwear}
               alt=""
               className={styles.img}
             />
@@ -26,7 +28,7 @@ const HomePage = () => {
         </NavLink>
         <NavLink to="/shoes">
           <div className={styles.card}>
-            <img src="src/assets/shoes.avif" alt="" className={styles.img} />
+            <img src={shoes} alt="" className={styles.img} />
             <div className={styles.title}>SHOES</div>
           </div>
         </NavLink>

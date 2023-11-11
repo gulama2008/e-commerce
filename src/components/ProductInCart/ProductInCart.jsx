@@ -4,6 +4,8 @@ import styles from "./ProductInCart.module.scss";
 import { toFloat } from "../../services/data-service";
 import QuantityButton from "../QuantityButton/QuantityButton";
 import { updateStock } from "../../services/products-service";
+import deleteIcon from "../../assets/delete.png"
+
 const ProductInCart = ({ item, isLastItem, index }) => {
   const {
     itemsInCart,
@@ -44,7 +46,7 @@ const ProductInCart = ({ item, isLastItem, index }) => {
 
       <div className={styles.edit}>
         <img
-          src="src/assets/delete.png"
+          src={deleteIcon}
           alt=""
           className={styles.delete}
           onClick={deleteItem}

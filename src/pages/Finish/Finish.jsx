@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import styles from './Finish.module.scss'
 import { NavLink } from 'react-router-dom';
-import { ProductsContext } from '../../context/ProductsContextProvider';
-import { saveItemsToSessionStorage } from '../../services/data-service';
+import finish from "../../assets/finish.png";
 
 const Finish = () => {
   
@@ -12,7 +11,7 @@ const Finish = () => {
         <p className={styles.sub_heading}>
           Your order has completed successfully
         </p>
-        <img src="src/assets/finish.png" alt="" />
+        <img src={finish} alt="" />
         <NavLink to='/'>
           <button className={styles.back} >back</button>
         </NavLink>

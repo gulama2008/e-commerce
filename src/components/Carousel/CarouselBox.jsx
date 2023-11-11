@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Carousel } from "antd";
 import styles from "./CarouselBox.module.scss";
+import banner0 from "../../assets/banner0.webp";
+import banner1 from "../../assets/banner1.webp";
+import banner2 from "../../assets/banner2.webp";
+import banner3 from "../../assets/banner3.jpeg";
 
 
 const CarouselBox = () => {
   const carouselImages = [
-    "src/assets/banner0.webp",
-    "src/assets/banner1.webp",
-    "src/assets/banner2.webp",
-    "src/assets/banner3.jpeg",
+    banner0,banner1,banner2,banner3
   ];
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const previousImg = () => {

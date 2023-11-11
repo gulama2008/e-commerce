@@ -3,7 +3,7 @@ import ProductInCart from "../../components/ProductInCart/ProductInCart";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import { ProductsContext } from "../../context/ProductsContextProvider";
 import styles from "./Cart.module.scss";
-import { getItemsInCart } from "../../services/data-service";
+import empty from '../../assets/empty.png'
 const Cart = () => {
   const {
     itemsInCart,
@@ -34,7 +34,7 @@ console.log(itemsInSessionStorage);
         </div>
       ) : (
           <div className={styles.empty}>
-            <img src="src/assets/empty.png" alt="" />
+            <img src={empty} alt="" />
           </div>
       )}
     </div>
