@@ -1,14 +1,21 @@
-# Minesweeper
+# E-Commerce
 
 ## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
+- [Structure/Features](#structure-features)
 - [Contact](#contact)
 
 ## Overview
 
 This is a mock e-commerce baby cloths website that uses react and firestore. It has home page, products pages, individual product details page, cart and checkout page, and favourite items page. The products are stored as firestore documents and user interactions requiring persistence like a favourites product list or adding products to their cart using session storage.
-
+afasfddsf
+afdsfas
+adfdsafasdf 
+adfadf  
+afdadf  
+a dfasdfsda
+adfaf  
+adfsadfds  
 
 ## Structure/Features
 
