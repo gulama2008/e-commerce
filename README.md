@@ -7,7 +7,6 @@ This is a mock e-commerce baby cloths website that uses react and firestore. It 
 ## Table of Contents
 
 - [Snippets](#snippets)
-- [Requirements](#requirements)
 - [Purpose](#purpose-of-project)
 - [Tech Stack](#tech-stack)
 - [Requirements](#requirements)
